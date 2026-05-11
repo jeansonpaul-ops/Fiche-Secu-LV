@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>LuxVisual — Fiches Sécurité</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;font-size:10.5pt;color:#222;background:#f0f2f5}
+
+  /* NAV */
+  #nav{position:fixed;top:0;left:0;width:260px;height:100vh;background:#1F3A5F;color:#fff;overflow-y:auto;z-index:100;padding:12px 0}
+  #nav h3{padding:10px 16px;font-size:10pt;color:#00B4D8;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #2d5080}
+  #nav .cat{padding:8px 16px 2px;font-size:8pt;color:#7aaac8;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+  #nav a{display:block;padding:5px 16px 5px 22px;font-size:9pt;color:#cde;text-decoration:none;border-left:3px solid transparent;transition:all .15s}
+  #nav a:hover,#nav a.active{background:#2d5080;border-left-color:#00B4D8;color:#fff}
+
+  /* TOOLBAR */
+  #toolbar{position:fixed;top:0;left:260px;right:0;height:48px;background:#fff;border-bottom:2px solid #1F3A5F;display:flex;align-items:center;gap:10px;padding:0 20px;z-index:99}
+  #toolbar .title{font-weight:bold;color:#1F3A5F;font-size:11pt;flex:1}
+  #toolbar button{background:#1F3A5F;color:#fff;border:none;padding:7px 16px;border-radius:4px;cursor:pointer;font-size:9.5pt;transition:background .15s}
+  #toolbar button:hover{background:#00B4D8}
+  #toolbar button.sec{background:#00B4D8}
+
+  /* MAIN */
+  #main{margin-left:260px;margin-top:48px;padding:24px}
+
+  /* PAGE FICHE */
+  .fiche{max-width:800px;margin:0 auto 40px;background:#fff;border:2px solid #1F3A5F;page-break-after:always}
+  .fiche-header{background:#1F3A5F;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
+  .fiche-header .logo{font-size:18pt;font-weight:bold;letter-spacing:1px}
+  .fiche-header .logo span{color:#00B4D8}
+  .fiche-header .doc-info{text-align:right;font-size:8.5pt;line-height:1.5}
+  .machine-banner{background:#00B4D8;color:#fff;padding:7px 18px;font-size:12pt;font-weight:bold}
+  .id-block{display:flex}
+  .id-cell{flex:1;padding:7px 12px;border-right:1px solid #ddd;border-bottom:2px solid #1F3A5F;font-size:9pt}
+  .id-cell:last-child{border-right:none}
+  .id-cell .label{color:#1F3A5F;font-weight:bold;font-size:7.5pt;text-transform:uppercase}
+  section{padding:9px 12px;border-bottom:1px solid #ddd}
+  section:last-child{border-bottom:none}
+  h2{font-size:10pt;color:#1F3A5F;text-transform:uppercase;background:#eef4f8;padding:4px 8px;margin-bottom:7px;border-left:4px solid #00B4D8}
+  table{width:100%;border-collapse:collapse;font-size:9pt}
+  th{background:#1F3A5F;color:#fff;padding:4px 7px;text-align:left;font-size:8.5pt}
+  td{padding:3px 7px;border-bottom:1px solid #eee;vertical-align:top}
+  tr:nth-child(even) td{background:#f7f9fc}
+  .epi-grid{display:flex;flex-wrap:wrap;gap:7px}
+  .epi-item{background:#eef4f8;border:1px solid #00B4D8;border-radius:4px;padding:4px 9px;font-size:9pt}
+  .epi-item .icon{font-size:13pt;display:block;text-align:center}
+  ol{padding-left:16px;font-size:9pt;line-height:1.7}
+  .encart-orange{background:#fff8e1;border:2px solid #f0a500;border-radius:4px;padding:9px 12px;margin-top:7px}
+  .encart-orange h3{color:#c07800;font-size:9.5pt;margin-bottom:5px}
+  .encart-red{background:#fff0f0;border:2px solid #c0392b;border-radius:4px;padding:9px 12px;margin-top:7px}
+  .encart-red h3{color:#c0392b;font-size:9.5pt;margin-bottom:5px}
+  .encart-blue{background:#f0f7ff;border:2px solid #1F3A5F;border-radius:4px;padding:9px 12px;margin-top:7px}
+  .encart-blue h3{color:#1F3A5F;font-size:9.5pt;margin-bottom:5px}
+  .encart-orange ul,.encart-red ul,.encart-blue ul{padding-left:14px;font-size:9pt;line-height:1.7}
+  .urgence{background:#fdecea;border-left:4px solid #c0392b;padding:7px 12px;font-size:9pt;line-height:1.8}
+  .urgence strong{color:#c0392b}
+  .machines-list{display:flex;gap:7px;flex-wrap:wrap;padding:7px 0 2px}
+  .machine-tag{background:#1F3A5F;color:#fff;border-radius:3px;padding:2px 8px;font-size:8.5pt}
+  .fiche-footer{background:#1F3A5F;color:#aac8e0;padding:5px 18px;font-size:7.5pt;display:flex;justify-content:space-between}
+
+  /* SOMMAIRE */
+  .sommaire{max-width:800px;margin:0 auto 40px;background:#fff;border:2px solid #1F3A5F;padding:0}
+  .sommaire-header{background:#1F3A5F;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
+  .sommaire-header .logo{font-size:18pt;font-weight:bold;letter-spacing:1px}
+  .sommaire-header .logo span{color:#00B4D8}
+  .sommaire-title{background:#00B4D8;color:#fff;padding:10px 18px;font-size:14pt;font-weight:bold}
+  .sommaire-body{padding:16px 18px}
+  .sommaire-cat{color:#1F3A5F;font-weight:bold;font-size:10.5pt;border-bottom:2px solid #00B4D8;padding-bottom:4px;margin:16px 0 8px}
+  .sommaire-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dotted #ddd;font-size:9.5pt}
+  .sommaire-row .ref{color:#1F3A5F;font-weight:bold;min-width:140px}
+
+  @media print{
+    #nav,#toolbar{display:none}
+    #main{margin:0;padding:0}
+    body{background:#fff}
+    .fiche{page-break-after:always;border:1px solid #999;margin:0}
+    .sommaire{page-break-after:always}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="nav">
+  <h3>📋 Fiches Sécurité</h3>
+  <div class="cat">Sommaire</div>
+  <a href="#sommaire">Vue d'ensemble</a>
+  <div class="cat">🖨️ Impression UV</div>
+  <a href="#fs-imp-m03">Swissqprint Nyala 2i LED</a>
+  <a href="#fs-imp-m04">Swissqprint Kudu</a>
+  <a href="#fs-imp-m05">HP 800w (×2)</a>
+  <a href="#fs-imp-m06">Epson SureColor S80600L</a>
+  <a href="#fs-imp-m07">P5 Tex iSub</a>
+  <a href="#fs-imp-m08">Calandre Monti</a>
+  <div class="cat">✂️ Façonnage</div>
+  <a href="#fs-fac-m01">Kala Mistral</a>
+  <a href="#fs-fac-m02">Rollsroller Flatbed</a>
+  <a href="#fs-fac-m03">EWS Work Station</a>
+  <a href="#fs-fac-m04">Fepatex JV-1</a>
+  <a href="#fs-fac-m05">Matic Ares 5000 Plus</a>
+  <a href="#fs-fac-m06">Matic P27 Sensitive</a>
+  <div class="cat">🔪 Découpe</div>
+  <a href="#fs-dec-m01">Summa S2</a>
+  <a href="#fs-dec-m02">Summa S3</a>
+  <a href="#fs-dec-m03">Zünd G3 3XL-3200</a>
+  <a href="#fs-dec-m04">Zünd G3 L-3200</a>
+  <a href="#fs-dec-m05">MultiCam Apex 3 Revo</a>
+  <a href="#fs-dec-m06">Trotec Speedy 400 flexx ⚠️</a>
+  <a href="#fs-dec-m07">Striebig Evolution 18</a>
+  <div class="cat">🧵 Textile</div>
+  <a href="#fs-tex-m01">Brodeuses Tajima</a>
+  <a href="#fs-tex-m05">Presses Drucktech</a>
+  <a href="#fs-tex-m08">Machines à coudre</a>
+  <div class="cat">🚜 Logistique</div>
+  <a href="#fs-log-m01">Still FM-Q25</a>
+  <a href="#fs-log-m02">Toyota Traigo48 18</a>
+  <a href="#fs-log-m03">Kärcher B60W Bp</a>
+</div>
+
+<!-- TOOLBAR -->
+<div id="toolbar">
+  <div class="title">LuxVisual — Fiches Sécurité Machines (25 fiches)</div>
+  <button onclick="window.print()">🖨️ Imprimer tout</button>
+  <button class="sec" onclick="printCurrent()">🖨️ Imprimer fiche active</button>
+</div>
+
+<div id="main">
+
+<!-- SOMMAIRE -->
+<div class="sommaire" id="sommaire">
+  <div class="sommaire-header">
+    <div class="logo">Lux<span>Visual</span></div>
+    <div style="text-align:right;font-size:8.5pt;color:#aac8e0;line-height:1.5">DOCUMENT SÉCURITÉ INTERNE<br>Réf. : FS-SOMMAIRE — v1.0<br>Mai 2026</div>
+  </div>
+  <div class="sommaire-title">Sommaire — 25 Fiches Sécurité Machines</div>
+  <div class="sommaire-body">
+    <div class="sommaire-cat">🖨️ Impression</div>
+    <div class="sommaire-row"><span class="ref">FS-IMP-M03</span><span>Swissqprint Nyala 2i LED — Imprimante UV LED grand format</span></div>
+    <div class="sommaire-row"><span class="ref">FS-IMP-M04</span><span>Swissqprint Kudu — Imprimante UV LED haute cadence</span></div>
+    <div class="sommaire-row"><span class="ref">FS-IMP-M05</span><span>HP 800w (×2) — Traceur jet d'encre aqueux grand format</span></div>
+    <div class="sommaire-row"><span class="ref">FS-IMP-M06</span><span>Epson SureColor S80600L — Traceur solvant grand format</span></div>
+    <div class="sommaire-row"><span class="ref">FS-IMP-M07</span><span>P5 Tex iSub — Imprimante sublimation textile</span></div>
+    <div class="sommaire-row"><span class="ref">FS-IMP-M08</span><span>Calandre Monti — Presse transfert thermique continue</span></div>
+    <div class="sommaire-cat">✂️ Façonnage</div>
+    <div class="sommaire-row"><span class="ref">FS-FAC-M01</span><span>Kala Mistral (×2) — Lamineuse / encolleuse grand format</span></div>
+    <div class="sommaire-row"><span class="ref">FS-FAC-M02</span><span>Rollsroller Flatbed — Table contre-collage à plat</span></div>
+    <div class="sommaire-row"><span class="ref">FS-FAC-M03</span><span>EWS Electric Work Station — Table contre-collage inclinable</span></div>
+    <div class="sommaire-row"><span class="ref">FS-FAC-M04</span><span>Fepatex JV-1 — Poseuse d'œillets automatique</span></div>
+    <div class="sommaire-row"><span class="ref">FS-FAC-M05</span><span>Matic Ares 5000 Plus Sign — Traceur de découpe grand format</span></div>
+    <div class="sommaire-row"><span class="ref">FS-FAC-M06</span><span>Matic Type P27 Sensitive — Traceur découpe matériaux sensibles</span></div>
+    <div class="sommaire-cat">🔪 Découpe</div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M01</span><span>Summa S2 — Traceur de découpe vinyle</span></div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M02</span><span>Summa S3 — Traceur de découpe haute performance</span></div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M03</span><span>Zünd G3 3XL-3200 — Table de découpe numérique grand format</span></div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M04</span><span>Zünd G3 L-3200 — Table de découpe numérique</span></div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M05</span><span>MultiCam Apex 3 Revo — Table de découpe CNC</span></div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M06</span><span>⚠️ Trotec Speedy 400 flexx — Laser CO₂ découpe et gravure</span></div>
+    <div class="sommaire-row"><span class="ref">FS-DEC-M07</span><span>⚠️ Striebig Evolution 18 — Scie verticale à panneaux</span></div>
+    <div class="sommaire-cat">🧵 Textile</div>
+    <div class="sommaire-row"><span class="ref">FS-TEX-M01-04</span><span>Brodeuses Tajima K1206C + S1501C (×4)</span></div>
+    <div class="sommaire-row"><span class="ref">FS-TEX-M05-07</span><span>Presses Drucktech 35H-12NA, PHP 45V2A, SP 45 SA</span></div>
+    <div class="sommaire-row"><span class="ref">FS-TEX-M08-11</span><span>Machines à coudre Jack E4, Juki DDL-9000B, DDL-8700, CP-180</span></div>
+    <div class="sommaire-cat">🚜 Logistique / Entretien</div>
+    <div class="sommaire-row"><span class="ref">FS-LOG-M01</span><span>Still FM-Q25 — Chariot élévateur électrique (CACES R489)</span></div>
+    <div class="sommaire-row"><span class="ref">FS-LOG-M02</span><span>Toyota Traigo48 18 — Chariot élévateur électrique 1,8 T (CACES R489)</span></div>
+    <div class="sommaire-row"><span class="ref">FS-LOG-M03</span><span>Kärcher B60W Bp — Autolaveuse sol autoportante</span></div>
+    <div style="margin-top:16px;padding:10px;background:#eef4f8;border-left:4px solid #00B4D8;font-size:9pt">
+      <strong>Numéros d'urgence :</strong> 112 (urgences) &nbsp;|&nbsp; Travailleur Désigné : _______________ &nbsp;|&nbsp; Responsable atelier : _______________ &nbsp;|&nbsp; Médecin du travail : _______________
+    </div>
+  </div>
+</div>
+
+<!-- ===================== IMPRESSION ===================== -->
+<div class="fiche" id="fs-imp-m03">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M03 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Swissqprint Nyala 2i LED — Imprimante UV LED grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>IMP-01 — Impression</div>
+    <div class="id-cell"><div class="label">Code</div>IMP-M03</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier impression</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Exposition encres UV LED (irritants, sensibilisants)</td><td>Cartouches, têtes</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Rayonnement UV (lampes polymérisation)</td><td>Barrière LED UV</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Écrasement / cisaillement</td><td>Chariot mobile, portique</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Inhalation vapeurs (VOC, cleaner)</td><td>Nettoyage têtes</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Chute d'objets lourds (supports rigides)</td><td>Manutention plaques</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants nitrile</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👕</span>Blouse</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2 (entretien)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'absence d'obstacles sur la table avant mise en route.</li>
+    <li>Ne jamais introduire les mains sous le portique pendant l'impression.</li>
+    <li>Porter les gants nitrile lors de tout contact avec cartouches ou têtes.</li>
+    <li>Utiliser le cleaner uniquement dans un espace ventilé, gants + lunettes obligatoires.</li>
+    <li>Supports > 15 kg : utiliser le transpalette ou demander de l'aide.</li>
+    <li>Ne pas regarder directement les lampes UV LED en fonctionnement.</li>
+    <li>Arrêt d'urgence obligatoire avant toute intervention manuelle.</li>
+  </ol>
+  <div class="encart-orange"><h3>🔆 Sensibilisation — Encres UV LED Swissqprint</h3><ul>
+    <li>Les encres UV LED contiennent des <strong>monomères acrylates</strong> potentiellement sensibilisants par contact répété.</li>
+    <li>Porter systématiquement les gants nitrile — une sensibilisation peut survenir progressivement.</li>
+    <li>Projection peau/yeux : rincer 15 min à l'eau claire et consulter un médecin.</li>
+    <li>FDS Swissqprint disponibles auprès du travailleur désigné.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Contact encre :</strong> Laver au savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112 si persistance. <strong>Écrasement :</strong> Arrêt urgence — 112. <strong>Inhalation :</strong> Air frais — 112 si nécessaire.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M03 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-imp-m04">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M04 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Swissqprint Kudu — Imprimante UV LED grand format haute cadence</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>IMP-01 — Impression</div>
+    <div class="id-cell"><div class="label">Code</div>IMP-M04</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier impression</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Exposition encres UV LED</td><td>Cartouches, têtes</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Rayonnement UV</td><td>Lampes LED UV</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Fatigue / surcharge cognitive (cadence élevée)</td><td>Production soutenue</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Écrasement / cisaillement (chariot grande vitesse)</td><td>Chariot mobile rapide</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Inhalation vapeurs (cleaner)</td><td>Entretien têtes</td><td>⚠️ Modéré</td></tr>
+    <tr><td>TMS (manutention répétitive)</td><td>Chargement/déchargement intensif</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants nitrile</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👕</span>Blouse</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'espace de dégagement autour du chariot avant chaque lancement.</li>
+    <li>Ne jamais franchir la zone de sécurité délimitée pendant le fonctionnement.</li>
+    <li>Porter les gants nitrile lors de tout contact avec cartouches ou têtes.</li>
+    <li>Cadence > 6h consécutives : signaler au responsable pour rotation.</li>
+    <li>Arrêt d'urgence obligatoire avant toute intervention manuelle.</li>
+    <li>Supports > 15 kg : transpalette obligatoire.</li>
+  </ol>
+  <div class="encart-orange"><h3>⚡ Sensibilisation — Cadence élevée</h3><ul>
+    <li>La pression temporelle peut conduire à des <strong>raccourcis de sécurité</strong> — rester vigilant même en production intensive.</li>
+    <li>Cycles rapides → risque TMS épaules/poignets/dos : alterner les opérateurs si possible.</li>
+    <li>Ne jamais désactiver les barrières de sécurité pour gagner du temps.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Contact encre :</strong> Laver au savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Écrasement :</strong> Arrêt urgence — 112. <strong>Surmenage :</strong> Repos, informer responsable.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M04 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-imp-m05">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M05 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">HP 800w — Traceur jet d'encre aqueux grand format (×2)</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>IMP-01 — Impression</div>
+    <div class="id-cell"><div class="label">Codes</div>IMP-M05a / IMP-M05b</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier impression</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Contact encres aqueuses (irritants légers)</td><td>Cartouches, fuites</td><td>⚠️ Faible</td></tr>
+    <tr><td>Coupure (lame coupe-papier intégrée)</td><td>Découpe auto fin de job</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coincement (entraîneur de support)</td><td>Chargement rouleaux</td><td>⚠️ Faible-modéré</td></tr>
+    <tr><td>Chute de rouleau</td><td>Manipulation rouleaux</td><td>⚠️ Faible-modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants nitrile (cartouches)</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (fuite encre)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures fermées</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Gants nitrile lors du remplacement des cartouches d'encre.</li>
+    <li>Ne pas introduire les mains dans le mécanisme d'entraînement en fonctionnement.</li>
+    <li>Déchargement rouleaux lourds : sécuriser avec les deux mains.</li>
+    <li>Bourrage : stopper avant intervention — attention à la lame de coupe.</li>
+    <li>Essuyer immédiatement toute tache d'encre au sol.</li>
+  </ol>
+  <div class="encart-blue"><h3>💧 Note — Encres aqueuses HP</h3><ul>
+    <li>Risque chimique <strong>faible</strong> — base eau + pigments. Éviter contact prolongé peau/yeux.</li>
+    <li>Risque principal : <strong>mécanique</strong> (lame de coupe, entraîneur) et ergonomique.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Contact encre :</strong> Rincer à l'eau. <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Coincement :</strong> Arrêt machine — 112 si bloquée. <strong>Chute rouleau :</strong> Évaluer — 112 si douleur dorsale.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M05 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-imp-m06">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M06 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Epson SureColor S80600L — Traceur jet d'encre solvant grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>IMP-01 — Impression</div>
+    <div class="id-cell"><div class="label">Code</div>IMP-M06</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier impression (ventilé)</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Inhalation vapeurs solvant (COV)</td><td>Encres solvant + séchage</td><td>🔴 Élevé</td></tr>
+    <tr><td>Contact cutané encres solvant</td><td>Cartouches, fuites</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Incendie (vapeurs solvant)</td><td>Accumulation COV espace confiné</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coupure (lame intégrée)</td><td>Découpe auto fin de job</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2/A1</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants nitrile</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Ventilation active obligatoire avant tout lancement d'impression.</li>
+    <li>Ne pas rester en espace confiné lors de longs tirages.</li>
+    <li>Masque + gants lors de tout contact avec cartouches ou têtes.</li>
+    <li>Pas de solvants ou produits inflammables à proximité.</li>
+    <li>Fuite d'encre : ventiler, absorber avec chiffon adapté, jeter dans conteneur solvants.</li>
+  </ol>
+  <div class="encart-orange"><h3>⚗️ Sensibilisation — Encres solvant et COV</h3><ul>
+    <li>Les COV sont <strong>irritants pour les voies respiratoires</strong> — ventilation et masque non optionnels.</li>
+    <li>Exposition chronique sans protection : risque de pathologies respiratoires/neurologiques.</li>
+    <li>Les vapeurs sont plus lourdes que l'air — s'accumulent au sol en espace peu ventilé.</li>
+    <li>FDS Epson disponibles auprès du travailleur désigné.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Inhalation :</strong> Air frais — 112 si malaise. <strong>Contact cutané :</strong> Laver eau + savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Incendie :</strong> Alarme, évacuation, extincteur CO₂ — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M06 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-imp-m07">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M07 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">P5 Tex iSub — Imprimante sublimation textile grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>IMP-01 / TEX-01</div>
+    <div class="id-cell"><div class="label">Code</div>IMP-M07</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier impression/textile</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Inhalation vapeurs encres sublimation</td><td>Encres lors de l'impression</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Contact cutané/oculaire</td><td>Cartouches, fuites</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coupure (lame intégrée)</td><td>Découpe auto papier transfert</td><td>⚠️ Modéré</td></tr>
+    <tr><td>TMS (manutention rouleaux)</td><td>Chargement/déchargement</td><td>⚠️ Faible-modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants nitrile</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2 (entretien)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures fermées</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Ventilation correcte pendant les impressions longues.</li>
+    <li>Gants nitrile lors du remplacement des cartouches ou en cas de fuite.</li>
+    <li>Ne pas introduire les mains dans le mécanisme d'entraînement en fonctionnement.</li>
+    <li>Bourrage : stopper avant intervention — attention lame de coupe.</li>
+  </ol>
+  <div class="encart-orange"><h3>🎨 Note — Encres sublimation et transfert thermique</h3><ul>
+    <li>Le risque chimique principal survient lors du <strong>transfert thermique (calandre)</strong>, pas uniquement à l'impression.</li>
+    <li>Le papier de transfert imprimé peut tacher durablement peau et vêtements.</li>
+    <li>Pour les risques de la phase transfert : voir fiche FS-IMP-M08 (Calandre Monti).</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Contact encre :</strong> Laver eau + savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M07 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-imp-m08">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M08 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Calandre Monti — Presse à transfert thermique continue (sublimation)</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>IMP-01 / TEX-01</div>
+    <div class="id-cell"><div class="label">Code</div>IMP-M08</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier (zone ventilée)</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Brûlure thermique grave (tambour chauffant)</td><td>Tambour 180–220 °C</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement / entraînement des mains</td><td>Rouleaux d'entrée du tissu</td><td>🔴 Élevé</td></tr>
+    <tr><td>Inhalation vapeurs sublimation (COV)</td><td>Dégagement gazeux lors du transfert</td><td>🔴 Élevé</td></tr>
+    <tr><td>Coincement cheveux / vêtements</td><td>Mécanisme d'entraînement continu</td><td>🔴 Élevé</td></tr>
+    <tr><td>Brûlure vapeur (sortie calandre)</td><td>Vapeurs chaudes en sortie</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-chaleur</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque A1</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👕</span>Tablier chaleur</div>
+    <div class="epi-item"><span class="icon">💇</span>Cheveux attachés</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Ventilation active obligatoire avant tout lancement.</li>
+    <li>Cheveux attachés, vêtements ajustés — aucun accessoire pendant.</li>
+    <li>Ne jamais introduire les mains dans la zone d'entraînement (nip point).</li>
+    <li>Se tenir sur le côté lors de la sortie du tissu (vapeurs chaudes).</li>
+    <li>En fin de poste : cycle de refroidissement, ne pas éteindre avant 60 °C.</li>
+    <li>Ne jamais laisser la calandre en température sans surveillance.</li>
+  </ol>
+  <div class="encart-red"><h3>🌡️ DANGER — Tambour 180–220 °C + vapeurs sublimation</h3><ul>
+    <li>Contact tambour = brûlure grave instantanée. Reste dangereux plusieurs minutes après arrêt.</li>
+    <li>Mécanisme continu puissant : vêtement ou cheveux entraîné(e) = impossible à stopper par réflexe.</li>
+    <li>Vapeurs sublimation : masque A1 + ventilation non négociables, même pour courtes opérations.</li>
+    <li>Ne jamais corriger l'alignement du tissu à la main près du point d'entrée en cours de cycle.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Brûlure thermique :</strong> Eau froide 15 min — NE PAS percer les cloques — 112 si étendue. <strong>Entraînement :</strong> Arrêt urgence — NE PAS tirer — 112. <strong>Inhalation :</strong> Air frais — 112. <strong>Brûlure vapeur :</strong> Eau froide — 112 si voies respiratoires.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M08 v1.0 — Mai 2026</span></div>
+</div>
+
+<!-- ===================== FAÇONNAGE ===================== -->
+<div class="fiche" id="fs-fac-m01">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M01 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Kala Mistral — Lamineuse / encolleuse grand format (×2)</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>FAC-01 — Façonnage</div>
+    <div class="id-cell"><div class="label">Codes</div>FAC-M01a / FAC-M01b</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier façonnage</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Écrasement / entraînement mains (rouleaux)</td><td>Rouleaux presseurs — nip point</td><td>🔴 Élevé</td></tr>
+    <tr><td>Coincement cheveux / vêtements</td><td>Mécanisme d'entraînement</td><td>🔴 Élevé</td></tr>
+    <tr><td>Brûlure thermique (laminage chaud)</td><td>Rouleaux chauffants</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coupure (lame de coupe intégrée)</td><td>Lame découpe en fin de passe</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Inhalation vapeurs (colle, film)</td><td>Chauffage adhésifs</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure (hors zone rouleaux)</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👕</span>Vêtements ajustés</div>
+    <div class="epi-item"><span class="icon">💇</span>Cheveux attachés</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Zone de nip point interdite aux mains en fonctionnement.</li>
+    <li>Cheveux attachés, vêtements ajustés, pas d'écharpes ni bijoux.</li>
+    <li>Attendre refroidissement complet avant réglage ou nettoyage.</li>
+    <li>Lame de coupe : gants anti-coupure, lame rétractée après usage.</li>
+    <li>Ventilation lors du laminage chaud.</li>
+    <li>Supports > 1,5 m : travailler à deux.</li>
+    <li>Gants interdits à proximité immédiate des rouleaux (risque entraînement).</li>
+  </ol>
+  <div class="encart-orange"><h3>🔄 Nip point — Zone de pincement</h3><ul>
+    <li>Main entraînée entre les rouleaux = impossible à retirer sans arrêt machine.</li>
+    <li>Guider le média avec un guide ou une règle — jamais avec les doigts en approche directe.</li>
+    <li>Entraînement accidentel : arrêt d'urgence immédiat, ne pas tirer en sens inverse.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Entraînement :</strong> Arrêt urgence — NE PAS tirer — 112. <strong>Brûlure :</strong> Eau froide 15 min — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M01 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-fac-m02">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M02 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Rollsroller Flatbed — Table de contre-collage à plat</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>FAC-01 — Façonnage</div>
+    <div class="id-cell"><div class="label">Code</div>FAC-M02</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier façonnage</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 à 2</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Écrasement / pincement (rouleau presseur)</td><td>Rouleau en déplacement</td><td>🔴 Élevé</td></tr>
+    <tr><td>Chute de supports lourds / grands formats</td><td>Manipulation panneaux rigides</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coupure (cutter finition)</td><td>Découpe des débords adhésifs</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Glissade (résidus adhésif sol)</td><td>Colle tombée au sol</td><td>⚠️ Faible-modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure (finition)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+    <div class="epi-item"><span class="icon">💇</span>Cheveux attachés</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Mains hors de la trajectoire du rouleau pendant le passage.</li>
+    <li>Vérifier absence de personnes dans la zone avant lancement.</li>
+    <li>Panneaux > 1,5 m ou > 15 kg : deux opérateurs obligatoires.</li>
+    <li>Nettoyer immédiatement tout résidu d'adhésif au sol.</li>
+    <li>Cutter : lame rétractable, couper en s'éloignant du corps.</li>
+    <li>Un opérateur «pilote» commande le rouleau, l'autre guide uniquement.</li>
+  </ol>
+  <div class="encart-orange"><h3>📐 Rouleau mobile — Zone de danger mobile</h3><ul>
+    <li>Le rouleau se déplace sur toute la longueur de la table : rester vigilant sur toute la course.</li>
+    <li>Défaut de collage détecté en cours de passage : arrêter le rouleau — ne pas glisser les doigts pour corriger.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Écrasement :</strong> Arrêt urgence — NE PAS tirer — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Chute panneau :</strong> Ne pas déplacer si choc — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M02 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-fac-m03">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M03 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">EWS Electric Work Station — Table de contre-collage à plat inclinable</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>FAC-01 — Façonnage</div>
+    <div class="id-cell"><div class="label">Code</div>FAC-M03</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier façonnage</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 à 2</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Écrasement / pincement (rouleau presseur)</td><td>Rouleau en déplacement</td><td>🔴 Élevé</td></tr>
+    <tr><td>Chute de support lors de l'inclinaison</td><td>Basculement motorisé</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement pied / membre (descente table)</td><td>Table en position inclinée</td><td>🔴 Élevé</td></tr>
+    <tr><td>Coupure (finition adhésif)</td><td>Cutter débords</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. (embout acier)</div>
+    <div class="epi-item"><span class="icon">💇</span>Cheveux attachés</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Avant inclinaison : support correctement fixé, personne hors de la trajectoire.</li>
+    <li>Ne jamais se placer sous la table inclinée sans verrouillage de sécurité activé.</li>
+    <li>Basculement motorisé : un seul opérateur aux commandes à la fois.</li>
+    <li>Annoncer verbalement le basculement à l'opérateur assistant.</li>
+    <li>Panneaux > 1,5 m ou > 15 kg : deux opérateurs.</li>
+    <li>En fin de poste : table horizontale, alimentation coupée.</li>
+  </ol>
+  <div class="encart-orange"><h3>📐 Table inclinable motorisée</h3><ul>
+    <li>Mouvement de basculement peut surprendre un opérateur mal positionné.</li>
+    <li>Support insuffisamment maintenu peut glisser brutalement lors du changement d'angle.</li>
+    <li>Ne jamais corriger la position d'un support à la main pendant le mouvement.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Écrasement membre :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Chute panneau :</strong> Éloigner, ne pas déplacer — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M03 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-fac-m04">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M04 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Fepatex JV-1 — Poseuse d'œillets automatique</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>FAC-01 — Façonnage</div>
+    <div class="id-cell"><div class="label">Code</div>FAC-M04</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier façonnage</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Perforation / écrasement doigts (poinçon)</td><td>Poinçon automatique en descente</td><td>🔴 Élevé</td></tr>
+    <tr><td>Projection de fragments métalliques</td><td>Oeillet mal positionné</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coupure (bords œillets)</td><td>Bords tranchants inox / laiton</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Bruit (choc poinçon répété)</td><td>Cycle haute fréquence</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes obligatoires</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure (chargement)</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives > 2h</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li><strong>Zone sous le poinçon = zone interdite aux doigts en toutes circonstances.</strong></li>
+    <li>Lunettes obligatoires — risque de projection d'oeillet.</li>
+    <li>Positionner le support avant déclenchement — jamais de correction à la main pendant le cycle.</li>
+    <li>Bourrage : arrêt machine avant toute intervention manuelle.</li>
+    <li>Œillets en vrac : manipulation avec gants (bords tranchants).</li>
+  </ol>
+  <div class="encart-orange"><h3>⚙️ Poinçon automatique</h3><ul>
+    <li>Le poinçon descend automatiquement et rapidement : temps de réaction humain insuffisant pour retirer les doigts.</li>
+    <li>Œillet mal alimenté = éjecté à grande vitesse : lunettes obligatoires à tout moment.</li>
+    <li>Ne jamais contourner le carter de protection pour accélérer la cadence.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Perforation doigt :</strong> Si outil planté — NE PAS retirer — 112. Sinon : comprimer, désinfecter, consulter. <strong>Projection oculaire :</strong> Rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M04 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-fac-m05">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M05 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Matic Ares 5000 Plus Sign — Traceur de découpe grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>FAC-01 — Façonnage</div>
+    <div class="id-cell"><div class="label">Code</div>FAC-M05</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier façonnage</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure (lame découpe)</td><td>Lame tangentielle / couteau oscillant</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement / coincement (portique)</td><td>Portique en déplacement automatique</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Inhalation poussières</td><td>Fraisage PVC, Dibond, acrylique</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Projection de fragments</td><td>Découpe matériaux rigides</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Hors de la zone de travail pendant toute opération.</li>
+    <li>Arrêt complet avant chargement/déchargement ou changement d'outil.</li>
+    <li>Masque + lunettes lors de la découpe de matériaux composites.</li>
+    <li>Supports > 15 kg : transpalette ou deux opérateurs.</li>
+    <li>Changer les lames avec gants anti-coupure — lames usagées dans conteneur dédié.</li>
+  </ol>
+  <div class="encart-orange"><h3>✂️ Lame en déplacement rapide</h3><ul>
+    <li>Toute la zone de découpe est dangereuse pendant le fonctionnement — pas uniquement la position actuelle de la lame.</li>
+    <li>Ne jamais repositionner un support ou retirer un chutage pendant le cycle.</li>
+    <li>Lames de rechange : extrêmement tranchantes — jamais à mains nues.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde/saignement. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Écrasement :</strong> Arrêt urgence — NE PAS déplacer — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M05 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-fac-m06">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M06 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Matic Type P27 Sensitive — Traceur de découpe matériaux sensibles</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>FAC-01 — Façonnage</div>
+    <div class="id-cell"><div class="label">Code</div>FAC-M06</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier façonnage</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure (lame précision très fine)</td><td>Lame tangentielle matériaux fins</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement / coincement (portique)</td><td>Portique en déplacement</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Chute de rouleau vinyle</td><td>Manipulation rouleaux lourds</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Hors de la zone de travail pendant toute opération.</li>
+    <li>Remplacement lame : gants anti-coupure obligatoires.</li>
+    <li>Ne pas récupérer les chutages pendant le cycle.</li>
+    <li>Rouleaux > 10 kg : support dérouleur ou aide.</li>
+    <li>Après utilisation : rétracter la lame et replacer le cache.</li>
+  </ol>
+  <div class="encart-orange"><h3>✂️ Lame fine — Matériaux sensibles</h3><ul>
+    <li>Lame très fine calibrée pour vinyle/film : <strong>extrêmement tranchante</strong> — ne jamais manipuler sans gants.</li>
+    <li>Chutages de vinyle : bords effilés — ne pas ramasser à mains nues.</li>
+    <li>Bourrage : arrêt machine avant intervention — ne pas tirer sous la lame.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement :</strong> Arrêt urgence — 112. <strong>Chute rouleau :</strong> Évaluer — 112 si douleur dorsale.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M06 v1.0 — Mai 2026</span></div>
+</div>
+
+<!-- ===================== DÉCOUPE ===================== -->
+<div class="fiche" id="fs-dec-m01">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M01 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Summa S2 — Traceur de découpe vinyle</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M01</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier découpe</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure (lame de découpe)</td><td>Lame tangentielle automatique</td><td>🔴 Élevé</td></tr>
+    <tr><td>Coincement (entraîneur de rouleau)</td><td>Rouleaux d'entraînement vinyle</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Chute de rouleau</td><td>Manipulation rouleaux vinyle</td><td>⚠️ Faible-modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures fermées</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Mains hors de la tête de coupe et des rouleaux en fonctionnement.</li>
+    <li>Remplacement lame : gants obligatoires — lames usagées dans conteneur dédié.</li>
+    <li>Ne pas récupérer les découpes pendant le cycle.</li>
+    <li>Rouleaux > 10 kg : support dérouleur ou aide.</li>
+    <li>Bourrage : arrêt machine avant intervention.</li>
+  </ol>
+  <div class="encart-orange"><h3>✂️ Lame et chutages vinyle</h3><ul>
+    <li>Toute la zone de découpe est dangereuse pendant le fonctionnement.</li>
+    <li>Chutages vinyle = bords effilés — ne jamais ramasser à mains nues.</li>
+    <li>Ne jamais désactiver les capteurs de fin de course.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Coincement :</strong> Arrêt machine — 112 si bloquée. <strong>Chute rouleau :</strong> Évaluer — 112 si douleur dorsale.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M01 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-dec-m02">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M02 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Summa S3 — Traceur de découpe vinyle haute performance</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M02</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier découpe</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure (lame haute vitesse)</td><td>Lame tangentielle / OPOS rapide</td><td>🔴 Élevé</td></tr>
+    <tr><td>Projection fragments (lame cassée)</td><td>Rupture de lame sous contrainte</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coincement entraîneur</td><td>Rouleaux pince-rouleau</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures fermées</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Mains hors tête de coupe et rouleaux pince en fonctionnement.</li>
+    <li>Vérifier chargement et alignement (lecture OPOS si applicable).</li>
+    <li>Remplacement lame : gants obligatoires.</li>
+    <li>Ne pas récupérer les découpes pendant le cycle.</li>
+    <li>Bourrage : arrêt machine avant intervention.</li>
+  </ol>
+  <div class="encart-orange"><h3>✂️ Vitesse élevée S3 — Précautions spécifiques</h3><ul>
+    <li>Vitesses supérieures au S2 : mouvements plus rapides et moins prévisibles — distance de sécurité accrue.</li>
+    <li>Lecture OPOS = mouvements automatiques de balayage avant coupe : ne pas se pencher sur la machine.</li>
+    <li>Casse de lame possible : lunettes obligatoires à tout moment.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Coincement :</strong> Arrêt machine — 112 si bloquée.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M02 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-dec-m03">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M03 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Zünd G3 3XL-3200 — Table de découpe numérique grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M03</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier découpe</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure / perforation (multi-outils)</td><td>Couteau oscillant, lame, fraise</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement / coincement (portique 3200 mm)</td><td>Portique grande course</td><td>🔴 Élevé</td></tr>
+    <tr><td>Inhalation poussières (fraisage)</td><td>Dibond, PVC, acrylique, mousse</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Projection de fragments</td><td>Fraisage haute vitesse</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2 (fraisage)</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Rester hors de la zone de travail délimitée pendant toute opération.</li>
+    <li>Vérifier la dépression (tapis) avant tout lancement.</li>
+    <li>Panneaux grands formats : deux opérateurs pour chargement/déchargement.</li>
+    <li>Masque + lunettes + protections auditives lors du fraisage.</li>
+    <li>Ne jamais désactiver les barrières immatérielles.</li>
+    <li>Changement d'outils : gants + arrêt complet.</li>
+  </ol>
+  <div class="encart-orange"><h3>⚙️ Grande course + multi-outils (3XL)</h3><ul>
+    <li>Table 3,2 m : portique peut atteindre un opérateur qui se déplace sur le côté.</li>
+    <li>Changement automatique d'outil (ARC) : mouvements inattendus de la tête — zone libre à tout moment.</li>
+    <li>Fraisage Dibond = copeaux aluminium/polyéthylène projetés + poussières fines.</li>
+    <li>Panne dépression = panneau peut se déplacer brutalement en cours de découpe.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement portique :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Projection oculaire :</strong> Rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M03 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-dec-m04">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M04 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Zünd G3 L-3200 — Table de découpe numérique grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M04</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier découpe</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure / perforation (multi-outils)</td><td>Couteau oscillant, lame, fraise</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement / coincement (portique)</td><td>Portique en déplacement</td><td>🔴 Élevé</td></tr>
+    <tr><td>Inhalation poussières + projection fragments</td><td>Fraisage matériaux rigides</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Rester hors de la zone de travail pendant toute opération.</li>
+    <li>Vérifier la dépression avant tout lancement.</li>
+    <li>Panneaux grands formats : deux opérateurs.</li>
+    <li>Ne jamais désactiver les barrières de sécurité.</li>
+    <li>Changement d'outils : gants + arrêt complet.</li>
+  </ol>
+  <div class="encart-orange"><h3>⚙️ G3 L vs 3XL — Mêmes risques</h3><ul>
+    <li>Architecture et outils identiques au 3XL : risques mécaniques, projections et poussières identiques.</li>
+    <li>En atelier partagé : identifier la machine active avant d'approcher — deux portiques possibles.</li>
+    <li>Procédures de changement d'outil et consignation identiques au G3 3XL.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Projection oculaire :</strong> Rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M04 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-dec-m05">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M05 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">MultiCam Apex 3 Revo — Table de découpe CNC grand format</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M05</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier découpe</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure / perforation (fraise, couteau)</td><td>Tête multi-outils haute vitesse</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement (portique CNC)</td><td>Déplacement automatique rapide</td><td>🔴 Élevé</td></tr>
+    <tr><td>Bruit élevé (fraise CNC)</td><td>Fraisage continu > 90 dB(A)</td><td>🔴 Élevé</td></tr>
+    <tr><td>Inhalation poussières / copeaux aluminium</td><td>Fraisage Dibond, PVC, acrylique</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2/P3</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives obligatoires</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. (embout acier)</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Zone de travail strictement interdite pendant toute opération CNC.</li>
+    <li>Vérifier fixation (dépression ou bridage) avant tout lancement.</li>
+    <li>Arrêt complet avant tout changement de fraise (consignation).</li>
+    <li>Ne jamais souffler les copeaux à l'air comprimé — utiliser l'aspiration.</li>
+    <li>Évacuer les copeaux régulièrement (risque glissade + incendie aluminium).</li>
+  </ol>
+  <div class="encart-orange"><h3>🔩 Fraisage CNC haute vitesse</h3><ul>
+    <li>Fraise = plusieurs milliers de tr/min : contact immédiatement grave.</li>
+    <li>Copeaux aluminium : coupants, projetés à plusieurs mètres.</li>
+    <li>Bruit > 90 dB(A) : risque de surdité professionnelle — protections auditives non optionnelles.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Traumatisme sonore :</strong> Arrêt exposition — ORL.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M05 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-dec-m06">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M06 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">⚠️ Trotec Speedy 400 flexx — Laser CO₂ découpe et gravure (CLASSE 4)</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M06</div>
+    <div class="id-cell"><div class="label">Classe laser</div>⚠️ Classe 1 (fermé) / Classe 4 (ouvert)</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>Formé laser OBLIGATOIRE</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Brûlure oculaire / cécité (laser invisible)</td><td>Faisceau CO₂ 10 600 nm</td><td>🔴 CRITIQUE</td></tr>
+    <tr><td>Brûlure cutanée (rayonnement laser)</td><td>Contact direct ou réfléchi</td><td>🔴 Élevé</td></tr>
+    <tr><td>Incendie / inflammation matériau</td><td>Surchauffe en cours de découpe</td><td>🔴 Élevé</td></tr>
+    <tr><td>Inhalation fumées toxiques</td><td>Combustion PVC, acrylique, vinyle</td><td>🔴 Élevé</td></tr>
+    <tr><td>Intoxication (gaz émis)</td><td>PVC → HCl, acrylique → COV</td><td>🔴 Élevé</td></tr>
+    <tr><td>Choc électrique (HT laser)</td><td>Source laser haute tension</td><td>🔴 Élevé</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes laser CO₂ (10 600 nm)</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque A2/P3</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants chaleur</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li><strong>Ne jamais ouvrir le capot pendant le fonctionnement — faisceau actif et invisible.</strong></li>
+    <li>Système d'extraction des fumées actif avant tout lancement.</li>
+    <li>Surveiller en permanence — ne jamais laisser sans surveillance.</li>
+    <li><strong>PVC interdit</strong> (dégage HCl toxique et corrosif) — vérifier compatibilité avant toute découpe.</li>
+    <li>Incendie dans l'enceinte : arrêt urgence, NE PAS ouvrir le capot, extincteur CO₂ extérieur.</li>
+    <li>Seuls les opérateurs formés et habilités peuvent utiliser cette machine.</li>
+    <li>Affichage pictogrammes laser réglementaires obligatoire au poste.</li>
+  </ol>
+  <div class="encart-red"><h3>⚠️ DANGER CRITIQUE — Laser CO₂ Classe 4</h3><ul>
+    <li><strong>Laser invisible</strong> (IR 10 600 nm) : exposition même brève = brûlure oculaire irréversible. Lunettes laser adaptées obligatoires capot ouvert.</li>
+    <li><strong>Matériaux interdits :</strong> PVC, polycarbonate, PTFE, matériaux halogénés, matériaux inconnus non testés.</li>
+    <li>Incendie enceinte : NE PAS ouvrir le capot (apport O₂) — couper alimentation — 112.</li>
+    <li>Fumées potentiellement cancérogènes selon matériau — extraction non négociable même courte durée.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Exposition oculaire laser :</strong> Ne pas frotter — couvrir l'œil — 112 immédiatement. <strong>Brûlure cutanée :</strong> Eau froide 15 min — 112. <strong>Incendie enceinte :</strong> Arrêt urgence — NE PAS ouvrir — extincteur CO₂ — 112. <strong>Inhalation fumées :</strong> Air frais — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M06 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-dec-m07">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M07 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">⚠️ Striebig Evolution 18 — Scie verticale à panneaux</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>DEC-01 — Découpe</div>
+    <div class="id-cell"><div class="label">Code</div>DEC-M07</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier découpe</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 minimum</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure / amputation (lame circulaire)</td><td>Lame en rotation — non protégée en coupe</td><td>🔴 CRITIQUE</td></tr>
+    <tr><td>Rebond (kick-back)</td><td>Coincement lame par le panneau</td><td>🔴 Élevé</td></tr>
+    <tr><td>Chute de panneau (scie verticale)</td><td>Déséquilibre / mauvais maintien</td><td>🔴 Élevé</td></tr>
+    <tr><td>Projection copeaux / éclats</td><td>Sciage haute vitesse</td><td>🔴 Élevé</td></tr>
+    <tr><td>Bruit élevé (lame circulaire)</td><td>Fonctionnement continu</td><td>🔴 Élevé</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure (hors zone lame)</div>
+    <div class="epi-item"><span class="icon">👓</span>Visière de protection</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives obligatoires</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. (embout acier)</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li><strong>Ne jamais approcher les mains de la lame</strong> — maintenir le panneau par les côtés, jamais derrière la lame.</li>
+    <li>Panneau correctement maintenu par les butées avant démarrage.</li>
+    <li>Panneaux lourds : deux opérateurs — un guide, un tient le panneau.</li>
+    <li>Pièces trop petites : gabarit de maintien adapté obligatoire.</li>
+    <li>Attendre l'arrêt complet de la lame avant toute intervention.</li>
+    <li>Vérifier état lame avant utilisation — lame émoussée = risque rebond accru.</li>
+    <li>Gants interdits à proximité immédiate de la lame (risque entraînement).</li>
+  </ol>
+  <div class="encart-red"><h3>🪚 DANGER — Rebond et scie verticale</h3><ul>
+    <li>Rebond (kick-back) : le panneau pince la lame, qui est violemment projetée vers l'opérateur. <strong>Ne jamais se placer dans l'axe de la lame.</strong></li>
+    <li>Panneau grand format en position verticale : chute possible sur l'opérateur ou des tiers.</li>
+    <li>La lame reste en rotation plusieurs secondes après l'arrêt du moteur : <strong>attendre l'arrêt complet.</strong></li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure/amputation :</strong> Comprimer fortement. Amputation : fragment dans linge propre et froid — 112 immédiatement. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Chute panneau :</strong> NE PAS déplacer — dégager si possible sans risque — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M07 v1.0 — Mai 2026</span></div>
+</div>
+
+<!-- ===================== TEXTILE ===================== -->
+<div class="fiche" id="fs-tex-m01">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-TEX-M01-04 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Brodeuses Tajima — Machines à broder industrielles multi-têtes</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>TEX-01 — Textile</div>
+    <div class="id-cell"><div class="label">Codes</div>TEX-M01 à TEX-M04</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier textile</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 par machine</div>
+  </div>
+  <section>
+    <div class="machines-list">
+      <span class="machine-tag">TEX-M01 — Tajima K1206C (×1)</span>
+      <span class="machine-tag">TEX-M02 — Tajima K1206C (×2)</span>
+      <span class="machine-tag">TEX-M03 — Tajima S1501C (×1)</span>
+      <span class="machine-tag">TEX-M04 — Tajima S1501C (×2)</span>
+    </div>
+  </section>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Piqûre / perforation (aiguilles)</td><td>Aiguilles multi-têtes en mouvement</td><td>🔴 Élevé</td></tr>
+    <tr><td>Coincement cheveux / vêtements</td><td>Mécanisme d'entraînement tissu</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Projection fragments (aiguille cassée)</td><td>Casse aiguille sous tension</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Bruit (multi-têtes simultané)</td><td>Fonctionnement continu</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes obligatoires</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives</div>
+    <div class="epi-item"><span class="icon">👕</span>Vêtements ajustés</div>
+    <div class="epi-item"><span class="icon">💇</span>Cheveux attachés</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures fermées</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Mains éloignées de la zone aiguilles en fonctionnement.</li>
+    <li>Couper l'alimentation avant changement d'aiguille ou intervention mécanique.</li>
+    <li>Cheveux attachés, vêtements ajustés, pas de bijoux pendants.</li>
+    <li>Casse d'aiguille : arrêter et récupérer tous les fragments avant de reprendre.</li>
+    <li>Ne jamais laisser la machine tourner sans surveillance.</li>
+  </ol>
+  <div class="encart-orange"><h3>🧵 K1206C — 12 têtes / 6 aiguilles = jusqu'à 72 aiguilles simultanées</h3><ul>
+    <li>Risque de piqûre démultiplié — maintenir distance de sécurité même en mode veille.</li>
+    <li>Changement automatique de couleur = mouvements mécaniques inattendus.</li>
+    <li>Blocage mécanique : ne jamais forcer manuellement — utiliser uniquement les commandes prévues.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Piqûre aiguille :</strong> Si plantée — NE PAS retirer — 112. Sinon : nettoyer, désinfecter, consulter. <strong>Projection oculaire :</strong> Ne pas frotter — rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M01-04 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-tex-m05">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-TEX-M05-07 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Presses Drucktech — Presses à transfert thermique textile</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>TEX-01 — Textile</div>
+    <div class="id-cell"><div class="label">Codes</div>TEX-M05 à TEX-M07</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier textile</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 par machine</div>
+  </div>
+  <section>
+    <div class="machines-list">
+      <span class="machine-tag">TEX-M05 — Drucktech 35H-12NA</span>
+      <span class="machine-tag">TEX-M06 — Drucktech PHP 45V2A</span>
+      <span class="machine-tag">TEX-M07 — Drucktech SP 45 SA</span>
+    </div>
+  </section>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Brûlure thermique (platine chauffante)</td><td>Platine 160–210 °C</td><td>🔴 Élevé</td></tr>
+    <tr><td>Brûlure vapeur (ouverture presse)</td><td>Dégagement vapeur</td><td>🔴 Élevé</td></tr>
+    <tr><td>Écrasement mains (fermeture presse)</td><td>Mécanisme pression pneumatique</td><td>🔴 Élevé</td></tr>
+    <tr><td>Inhalation vapeurs (sublimation, DTF)</td><td>Chauffage encres et colles DTF</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-chaleur</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👕</span>Tablier chaleur</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2 (DTF)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu.</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Gants anti-chaleur obligatoires à chaque cycle pour poser et retirer les supports.</li>
+    <li>Ouverture presse : se tenir à l'écart du dégagement de vapeur.</li>
+    <li>Mains hors de la platine pendant la descente / fermeture.</li>
+    <li>Ventilation suffisante lors du pressage DTF.</li>
+    <li>En fin de poste : éteindre et laisser refroidir avant nettoyage.</li>
+  </ol>
+  <div class="encart-red"><h3>🌡️ Brûlure thermique 160–210 °C</h3><ul>
+    <li>Brûlure grave en moins d'une seconde de contact — gants anti-chaleur obligatoires à chaque cycle.</li>
+    <li>Vapeur à l'ouverture : brûlures voies respiratoires possibles — ouvrir face détournée.</li>
+    <li>Colles DTF chauffées = vapeurs irritantes — ventilation + masque FFP2 obligatoires.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Brûlure thermique :</strong> Eau froide 15 min — NE PAS percer — 112 si étendue. <strong>Brûlure vapeur voies resp. :</strong> Air frais — 112. <strong>Écrasement mains :</strong> Arrêt urgence — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M05-07 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-tex-m08">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-TEX-M08-11 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Machines à coudre industrielles — Postes de couture</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>TEX-01 — Textile</div>
+    <div class="id-cell"><div class="label">Codes</div>TEX-M08 à TEX-M11</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier textile</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>1 par machine</div>
+  </div>
+  <section>
+    <div class="machines-list">
+      <span class="machine-tag">TEX-M08 — Jack E4</span>
+      <span class="machine-tag">TEX-M09 — Juki DDL-9000B-SS</span>
+      <span class="machine-tag">TEX-M10 — Juki DDL-8700-7</span>
+      <span class="machine-tag">TEX-M11 — Juki CP-180</span>
+    </div>
+  </section>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Piqûre / perforation des doigts</td><td>Aiguille haute vitesse</td><td>🔴 Élevé</td></tr>
+    <tr><td>Coupure (lame coupe-fil automatique)</td><td>Lame automatique Juki</td><td>⚠️ Modéré</td></tr>
+    <tr><td>TMS (posture assise prolongée)</td><td>Gestes fins répétitifs longues sessions</td><td>🔴 Élevé</td></tr>
+    <tr><td>Fatigue visuelle</td><td>Travail minutieux concentration soutenue</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Dé / protège-doigts</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (projection fil)</div>
+    <div class="epi-item"><span class="icon">🔇</span>Protections auditives si > 80 dB</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures fermées</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Mains hors de la zone aiguille en fonctionnement, même à faible vitesse.</li>
+    <li>Couper l'alimentation avant changement d'aiguille, de canette ou intervention.</li>
+    <li>Casse d'aiguille : arrêter, récupérer tous les fragments avant de reprendre.</li>
+    <li>Régler hauteur siège et table : coudes à 90°, pieds à plat.</li>
+    <li>Pauses minimum 10 min toutes les 2h de couture continue.</li>
+    <li>Signaler toute douleur persistante mains/poignets/épaules/dos.</li>
+  </ol>
+  <div class="encart-blue"><h3>🪑 TMS — Posture assise couture industrielle</h3><ul>
+    <li>Posture statique + gestes fins répétitifs = zones à risque : poignets, coudes, épaules, nuque, bas du dos.</li>
+    <li>Régler le poste à sa morphologie avant de commencer.</li>
+    <li>Alterner avec des tâches debout si possible (approvisionnement, contrôle qualité).</li>
+    <li>Étirements mains/poignets 30 sec × 2 par demi-journée réduisent significativement le risque.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Piqûre aiguille :</strong> Si plantée — NE PAS retirer — 112. Sinon : nettoyer, désinfecter, consulter. <strong>Douleur TMS aiguë :</strong> Arrêt activité — signaler responsable — médecin du travail sous 24h.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M08-11 v1.0 — Mai 2026</span></div>
+</div>
+
+<!-- ===================== LOGISTIQUE ===================== -->
+<div class="fiche" id="fs-log-m01">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ APPAREIL<br>Réf. : FS-LOG-M01 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Still FM-Q25 — Chariot élévateur électrique frontal</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>EXP-01 — Logistique</div>
+    <div class="id-cell"><div class="label">Code</div>LOG-M01</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier, quai, dépôt</div>
+    <div class="id-cell"><div class="label">Conducteurs</div>CACES R489 cat. 1 ou 3</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Renversement du chariot</td><td>Virage rapide, surcharge, sol irrégulier</td><td>🔴 Critique</td></tr>
+    <tr><td>Écrasement / heurt de piétons</td><td>Angles morts, déplacement silencieux</td><td>🔴 Élevé</td></tr>
+    <tr><td>Chute de charge</td><td>Charge mal équilibrée, élévation excessive</td><td>🔴 Élevé</td></tr>
+    <tr><td>Incident batterie (charge, manipulation)</td><td>Batterie traction plomb-acide</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. (embout acier)</div>
+    <div class="epi-item"><span class="icon">🦺</span>Gilet haute visibilité</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants manutention</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li><strong>CACES R489 cat. 1 ou 3 + habilitation LuxVisual obligatoires.</strong></li>
+    <li>Contrôle journalier avant utilisation (fourches, freins, batterie, éclairage).</li>
+    <li>Jamais de personnes sur le chariot ou les fourches.</li>
+    <li>Circuler fourches abaissées (10–15 cm sol).</li>
+    <li>Respecter la charge maximale admissible (plaque de charge).</li>
+    <li>Klaxonner aux intersections et zones sans visibilité.</li>
+    <li>Recharge batterie uniquement dans le local dédié ventilé.</li>
+  </ol>
+  <div class="encart-orange"><h3>🔋 Chariot électrique silencieux — Précautions</h3><ul>
+    <li>Chariot électrique silencieux : utiliser systématiquement l'avertisseur sonore en zone partagée.</li>
+    <li>Renversement : NE PAS sauter — s'agripper, rester dans le poste, se pencher côté opposé.</li>
+    <li>Recharge = dégagement d'hydrogène : local ventilé obligatoire.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Renversement :</strong> Rester dans le poste, s'agripper, se pencher côté opposé — 112. <strong>Piéton heurté :</strong> Arrêt — NE PAS déplacer — 112. <strong>Chute charge :</strong> Éloigner les personnes — 112 si blessé.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M01 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-log-m02">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ APPAREIL<br>Réf. : FS-LOG-M02 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Toyota Traigo48 18 — Chariot élévateur électrique frontal 1,8 T</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>EXP-01 — Logistique</div>
+    <div class="id-cell"><div class="label">Code</div>LOG-M02</div>
+    <div class="id-cell"><div class="label">Zone</div>Atelier, quai, dépôt</div>
+    <div class="id-cell"><div class="label">Conducteurs</div>CACES R489 cat. 1 ou 3</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Renversement du chariot</td><td>Virage rapide, surcharge, dénivelé</td><td>🔴 Critique</td></tr>
+    <tr><td>Écrasement / heurt piétons</td><td>Angles morts, déplacement silencieux</td><td>🔴 Élevé</td></tr>
+    <tr><td>Chute de charge (1,8 T)</td><td>Charge mal calée, élévation excessive</td><td>🔴 Élevé</td></tr>
+    <tr><td>Incident batterie 48V</td><td>Batterie traction haute capacité</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. (embout acier)</div>
+    <div class="epi-item"><span class="icon">🦺</span>Gilet haute visibilité</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants manutention</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li><strong>CACES R489 cat. 1 ou 3 + habilitation LuxVisual obligatoires.</strong></li>
+    <li>Contrôle journalier avant utilisation.</li>
+    <li>Respecter impérativement la charge nominale 1,8 T — vérifier la plaque selon hauteur d'élévation.</li>
+    <li>Circuler fourches abaissées.</li>
+    <li>En descente de rampe : reculer (charge devant, côté montée).</li>
+    <li>Klaxonner aux intersections.</li>
+    <li>Ne jamais poser d'outils métalliques sur la batterie 48V.</li>
+  </ol>
+  <div class="encart-orange"><h3>⚖️ Capacité 1,8 T — Centre de gravité</h3><ul>
+    <li>Capacité diminue avec la hauteur d'élévation et le déport — consulter la plaque de charge.</li>
+    <li>Charge mal centrée ou asymétrique = risque de renversement accru.</li>
+    <li>Renversement : NE PAS sauter — s'agripper au volant, rester dans le poste.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Renversement :</strong> S'agripper, se pencher côté opposé — 112. <strong>Piéton heurté :</strong> Arrêt — NE PAS déplacer — 112. <strong>Incendie batterie :</strong> Évacuer — extincteur CO₂ — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M02 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-log-m03">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ APPAREIL<br>Réf. : FS-LOG-M03 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Kärcher B60W Bp — Autolaveuse sol autoportante à batterie</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Usage</div>Nettoyage sols ateliers</div>
+    <div class="id-cell"><div class="label">Code</div>LOG-M03</div>
+    <div class="id-cell"><div class="label">Zone</div>Tous ateliers / couloirs</div>
+    <div class="id-cell"><div class="label">Opérateurs</div>Personnel formé</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Glissade (sol mouillé pendant/après lavage)</td><td>Film d'eau résiduel sol lisse</td><td>🔴 Élevé</td></tr>
+    <tr><td>Heurt de piétons / collision</td><td>Déplacement en zone de travail</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Contact produits lessiviels (irritants)</td><td>Remplissage / vidange bac détergent</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Renversement (rampe / dénivelé)</td><td>Utilisation sur sol en pente</td><td>⚠️ Faible-modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👟</span>Chaussures antidérapantes</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants produits chimiques (remplissage)</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (remplissage détergent)</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Signaliser la zone avec panneaux «Sol mouillé» avant et pendant l'opération.</li>
+    <li>Ne pas utiliser en zone de circulation active de chariots élévateurs.</li>
+    <li>Gants + lunettes lors du remplissage du bac détergent.</li>
+    <li>Ne pas dépasser les doses de détergent recommandées.</li>
+    <li>Vider et nettoyer le bac à eaux usées après chaque utilisation.</li>
+    <li>Recharge batterie dans zone dédiée uniquement.</li>
+  </ol>
+  <div class="encart-blue"><h3>💧 Sol mouillé — Risque immédiat pour tous</h3><ul>
+    <li>Sol mouillé en atelier = risque glissade pour tous les opérateurs qui passent — signalisation obligatoire avant de démarrer.</li>
+    <li>Sols polis/résine : restent glissants plusieurs minutes après passage — maintenir signalisation jusqu'à séchage complet.</li>
+    <li>Planifier le nettoyage hors production ou en zone délimitée — coordonner avec responsable atelier.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Glissade/chute :</strong> Évaluer — si douleur dorsale/cervicale : NE PAS déplacer — 112. <strong>Contact détergent yeux :</strong> Rinçage 15 min — consulter médecin. <strong>Collision piéton :</strong> Arrêt — NE PAS déplacer si choc important — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M03 v1.0 — Mai 2026</span></div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Navigation active highlight
+const links = document.querySelectorAll('#nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('#nav a[href="#'+e.target.id+'"]');
+      if(a) a.classList.add('active');
+    }
+  });
+}, {threshold:0.3});
+document.querySelectorAll('.fiche, .sommaire').forEach(f => observer.observe(f));
+
+// Print current visible fiche
+function printCurrent(){
+  const active = document.querySelector('#nav a.active');
+  if(!active){alert('Navigue vers une fiche pour l\'imprimer individuellement.');return;}
+  const id = active.getAttribute('href').replace('#','');
+  const el = document.getElementById(id);
+  if(!el){return;}
+  const w = window.open('','_blank');
+  w.document.write('<html><head><title>'+el.querySelector('.machine-banner').textContent+'</title><style>'+
+    '*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5pt;color:#222}'+
+    document.querySelector('style').textContent+
+    '</style></head><body>'+el.outerHTML+'</body></html>');
+  w.document.close();
+  w.print();
+}
+</script>
+</body>
+</html>
