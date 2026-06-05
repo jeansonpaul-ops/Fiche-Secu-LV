@@ -86,27 +86,76 @@
   .fiche-actions button.dl:hover{background:#0096b8}
   @media print{.fiche-actions{display:none}}
   @media print{
+    @page{size:A4 portrait;margin:6mm 7mm}
     *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
     #nav,#toolbar,.fiche-actions{display:none!important}
-    #main{margin:0;padding:0}
-    body{background:#fff}
-    .fiche{page-break-after:always;border:2px solid #1F3A5F!important;margin:0}
-    .sommaire{page-break-after:always}
-    .fiche-header{background:#1F3A5F!important;color:#fff!important}
-    .fiche-header .logo{color:#fff!important}
+    #main{margin:0!important;padding:0!important}
+    body{background:#fff!important;font-size:7.5pt!important}
+
+    /* Fiche tient sur une page A4 */
+    .fiche{
+      page-break-after:always!important;
+      page-break-inside:avoid!important;
+      border:1.5px solid #1F3A5F!important;
+      margin:0!important;
+      max-width:100%!important;
+      width:100%!important;
+    }
+    .sommaire{page-break-after:always!important}
+
+    /* En-têtes et bandeaux */
+    .fiche-header{background:#1F3A5F!important;color:#fff!important;padding:6px 10px!important}
+    .fiche-header .logo{font-size:12pt!important;color:#fff!important}
     .fiche-header .logo span{color:#00B4D8!important}
-    .machine-banner{background:#00B4D8!important;color:#fff!important}
-    h2{background:#eef4f8!important;color:#1F3A5F!important;border-left:4px solid #00B4D8!important}
-    th{background:#1F3A5F!important;color:#fff!important}
+    .fiche-header .doc-info{font-size:6pt!important;line-height:1.4!important}
+    .machine-banner{background:#00B4D8!important;color:#fff!important;padding:4px 10px!important;font-size:9pt!important}
+
+    /* Bloc identification */
+    .id-block{border-bottom:1.5px solid #1F3A5F!important}
+    .id-cell{padding:3px 7px!important;font-size:7pt!important}
+    .id-cell .label{font-size:6pt!important}
+
+    /* Sections */
+    section{padding:4px 8px!important;border-bottom:1px solid #ddd!important}
+    h2{font-size:7pt!important;padding:2px 6px!important;margin-bottom:4px!important;border-left:3px solid #00B4D8!important;background:#eef4f8!important;color:#1F3A5F!important}
+
+    /* Tableau risques */
+    table{font-size:7pt!important}
+    th{background:#1F3A5F!important;color:#fff!important;padding:2px 5px!important;font-size:6.5pt!important}
+    td{padding:2px 5px!important;font-size:7pt!important}
     tr:nth-child(even) td{background:#f7f9fc!important}
-    .epi-item{background:#eef4f8!important;border:1px solid #00B4D8!important}
-    .encart-orange{background:#fff8e1!important;border:2px solid #f0a500!important}
-    .encart-red{background:#fff0f0!important;border:2px solid #c0392b!important}
-    .encart-blue{background:#f0f7ff!important;border:2px solid #1F3A5F!important}
-    .urgence{background:#fdecea!important;border-left:4px solid #c0392b!important}
-    .signatures{border-top:2px solid #1F3A5F!important}
-    .fiche-footer{background:#1F3A5F!important;color:#aac8e0!important}
-    .id-block{border-bottom:2px solid #1F3A5F!important}
+
+    /* EPI */
+    .epi-grid{gap:4px!important}
+    .epi-item{background:#eef4f8!important;border:1px solid #00B4D8!important;padding:2px 6px!important;font-size:7pt!important}
+    .epi-item .icon{font-size:9pt!important}
+
+    /* Consignes */
+    ol{font-size:7pt!important;line-height:1.4!important;padding-left:12px!important}
+
+    /* Encarts */
+    .encart-orange{background:#fff8e1!important;border:1.5px solid #f0a500!important;padding:4px 8px!important;margin-top:4px!important}
+    .encart-orange h3{font-size:7pt!important;margin-bottom:3px!important;color:#c07800!important}
+    .encart-red{background:#fff0f0!important;border:1.5px solid #c0392b!important;padding:4px 8px!important;margin-top:4px!important}
+    .encart-red h3{font-size:7pt!important;margin-bottom:3px!important;color:#c0392b!important}
+    .encart-blue{background:#f0f7ff!important;border:1.5px solid #1F3A5F!important;padding:4px 8px!important;margin-top:4px!important}
+    .encart-blue h3{font-size:7pt!important;color:#1F3A5F!important}
+    .encart-orange ul,.encart-red ul,.encart-blue ul{font-size:7pt!important;line-height:1.4!important;padding-left:10px!important}
+
+    /* Urgences */
+    .urgence{background:#fdecea!important;border-left:3px solid #c0392b!important;padding:4px 8px!important;font-size:7pt!important;line-height:1.5!important}
+
+    /* Signatures */
+    .signatures{border-top:1.5px solid #1F3A5F!important}
+    .sign-cell{padding:4px 8px 14px!important;font-size:7pt!important}
+    .sign-cell .sign-role{font-size:7pt!important;margin-bottom:2px!important}
+    .sign-cell .sign-sub{font-size:6pt!important}
+    .sign-cell .sign-line{margin-top:10px!important}
+
+    /* Footer */
+    .fiche-footer{background:#1F3A5F!important;color:#aac8e0!important;padding:3px 10px!important;font-size:6.5pt!important}
+
+    /* Sommaire */
     .sommaire-header{background:#1F3A5F!important;color:#fff!important}
     .sommaire-title{background:#00B4D8!important;color:#fff!important}
   }
@@ -1925,7 +1974,7 @@ document.querySelectorAll('.fiche, .sommaire').forEach(f => observer.observe(f))
 
 // Print current visible fiche
 
-var PRINT_EXTRA_CSS = '*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}.fiche-actions{display:none!important}#nav,#toolbar{display:none!important}.fiche{border:2px solid #1F3A5F!important;margin:0}.fiche-header{background:#1F3A5F!important;color:#fff!important}.fiche-header .logo{color:#fff!important}.fiche-header .logo span{color:#00B4D8!important}.machine-banner{background:#00B4D8!important;color:#fff!important}h2{background:#eef4f8!important;color:#1F3A5F!important;border-left:4px solid #00B4D8!important}th{background:#1F3A5F!important;color:#fff!important}tr:nth-child(even) td{background:#f7f9fc!important}.epi-item{background:#eef4f8!important;border:1px solid #00B4D8!important}.encart-orange{background:#fff8e1!important;border:2px solid #f0a500!important}.encart-red{background:#fff0f0!important;border:2px solid #c0392b!important}.encart-blue{background:#f0f7ff!important;border:2px solid #1F3A5F!important}.urgence{background:#fdecea!important;border-left:4px solid #c0392b!important}.fiche-footer{background:#1F3A5F!important;color:#aac8e0!important}.signatures{border-top:2px solid #1F3A5F!important}';
+var PRINT_EXTRA_CSS = '@page{size:A4 portrait;margin:6mm 7mm}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}.fiche-actions{display:none!important}#nav,#toolbar{display:none!important}body{font-size:7.5pt!important}.fiche{page-break-after:always!important;border:1.5px solid #1F3A5F!important;margin:0!important;max-width:100%!important;width:100%!important}.fiche-header{background:#1F3A5F!important;color:#fff!important;padding:6px 10px!important}.fiche-header .logo{font-size:12pt!important;color:#fff!important}.fiche-header .logo span{color:#00B4D8!important}.fiche-header .doc-info{font-size:6pt!important}.machine-banner{background:#00B4D8!important;color:#fff!important;padding:4px 10px!important;font-size:9pt!important}.id-cell{padding:3px 7px!important;font-size:7pt!important}.id-cell .label{font-size:6pt!important}section{padding:4px 8px!important}h2{font-size:7pt!important;padding:2px 6px!important;margin-bottom:4px!important;background:#eef4f8!important;color:#1F3A5F!important;border-left:3px solid #00B4D8!important}table{font-size:7pt!important}th{background:#1F3A5F!important;color:#fff!important;padding:2px 5px!important;font-size:6.5pt!important}td{padding:2px 5px!important;font-size:7pt!important}tr:nth-child(even) td{background:#f7f9fc!important}.epi-item{background:#eef4f8!important;border:1px solid #00B4D8!important;padding:2px 6px!important;font-size:7pt!important}.epi-item .icon{font-size:9pt!important}ol{font-size:7pt!important;line-height:1.4!important;padding-left:12px!important}.encart-orange{background:#fff8e1!important;border:1.5px solid #f0a500!important;padding:4px 8px!important;margin-top:4px!important}.encart-orange h3{font-size:7pt!important;color:#c07800!important}.encart-red{background:#fff0f0!important;border:1.5px solid #c0392b!important;padding:4px 8px!important;margin-top:4px!important}.encart-red h3{font-size:7pt!important;color:#c0392b!important}.encart-blue{background:#f0f7ff!important;border:1.5px solid #1F3A5F!important;padding:4px 8px!important;margin-top:4px!important}.encart-blue h3{font-size:7pt!important;color:#1F3A5F!important}.encart-orange ul,.encart-red ul,.encart-blue ul{font-size:7pt!important;line-height:1.4!important;padding-left:10px!important}.urgence{background:#fdecea!important;border-left:3px solid #c0392b!important;padding:4px 8px!important;font-size:7pt!important;line-height:1.5!important}.signatures{border-top:1.5px solid #1F3A5F!important}.sign-cell{padding:4px 8px 14px!important;font-size:7pt!important}.sign-cell .sign-role{font-size:7pt!important}.sign-cell .sign-sub{font-size:6pt!important}.sign-cell .sign-line{margin-top:10px!important}.fiche-footer{background:#1F3A5F!important;color:#aac8e0!important;padding:3px 10px!important;font-size:6.5pt!important}';
 
 function printFiche(id){
   const el = document.getElementById(id);
