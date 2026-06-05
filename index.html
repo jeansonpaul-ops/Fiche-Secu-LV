@@ -77,6 +77,14 @@
   .sommaire-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dotted #ddd;font-size:9.5pt}
   .sommaire-row .ref{color:#1F3A5F;font-weight:bold;min-width:140px}
 
+
+  /* FICHE ACTIONS BAR */
+  .fiche-actions{display:flex;justify-content:flex-end;gap:8px;padding:8px 12px;background:#f0f4f8;border-bottom:1px solid #d0dce8}
+  .fiche-actions button{background:#1F3A5F;color:#fff;border:none;padding:5px 14px;border-radius:4px;cursor:pointer;font-size:8.5pt;display:flex;align-items:center;gap:5px;transition:background .15s}
+  .fiche-actions button:hover{background:#00B4D8}
+  .fiche-actions button.dl{background:#00B4D8}
+  .fiche-actions button.dl:hover{background:#0096b8}
+  @media print{.fiche-actions{display:none}}
   @media print{
     #nav,#toolbar{display:none}
     #main{margin:0;padding:0}
@@ -204,6 +212,7 @@
 
 <!-- ===================== IMPRESSION ===================== -->
 <div class="fiche" id="fs-imp-m03">
+  <div class="fiche-actions"><button onclick="printFiche('fs-imp-m03')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-imp-m03')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M03 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Swissqprint Nyala 2i LED — Imprimante UV LED grand format</div>
   <div class="id-block">
@@ -247,12 +256,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M03 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-imp-m04">
+  <div class="fiche-actions"><button onclick="printFiche('fs-imp-m04')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-imp-m04')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M04 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Swissqprint Kudu — Imprimante UV LED grand format haute cadence</div>
   <div class="id-block">
@@ -295,12 +304,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M04 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-imp-m05">
+  <div class="fiche-actions"><button onclick="printFiche('fs-imp-m05')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-imp-m05')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M05 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">HP 800w — Traceur jet d'encre aqueux grand format (×2)</div>
   <div class="id-block">
@@ -337,12 +346,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M05 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-imp-m06">
+  <div class="fiche-actions"><button onclick="printFiche('fs-imp-m06')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-imp-m06')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M06 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Epson SureColor S80600L — Traceur jet d'encre solvant grand format</div>
   <div class="id-block">
@@ -382,12 +391,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M06 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-imp-m07">
+  <div class="fiche-actions"><button onclick="printFiche('fs-imp-m07')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-imp-m07')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M07 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">P5 Tex iSub — Imprimante sublimation textile grand format</div>
   <div class="id-block">
@@ -425,12 +434,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M07 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-imp-m08">
+  <div class="fiche-actions"><button onclick="printFiche('fs-imp-m08')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-imp-m08')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-IMP-M08 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Calandre Monti — Presse à transfert thermique continue (sublimation)</div>
   <div class="id-block">
@@ -474,13 +483,13 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M08 v1.0 — Mai 2026</span></div>
 </div>
 
 <!-- ===================== FAÇONNAGE ===================== -->
 <div class="fiche" id="fs-fac-m01">
+  <div class="fiche-actions"><button onclick="printFiche('fs-fac-m01')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-fac-m01')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M01 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Kala Mistral — Lamineuse / encolleuse grand format (×2)</div>
   <div class="id-block">
@@ -523,12 +532,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M01 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-fac-m02">
+  <div class="fiche-actions"><button onclick="printFiche('fs-fac-m02')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-fac-m02')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M02 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Rollsroller Flatbed — Table de contre-collage à plat</div>
   <div class="id-block">
@@ -566,12 +575,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M02 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-fac-m03">
+  <div class="fiche-actions"><button onclick="printFiche('fs-fac-m03')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-fac-m03')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M03 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">EWS Electric Work Station — Table de contre-collage à plat inclinable</div>
   <div class="id-block">
@@ -610,12 +619,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M03 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-fac-m04">
+  <div class="fiche-actions"><button onclick="printFiche('fs-fac-m04')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-fac-m04')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M04 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Fepatex JV-1 — Poseuse d'œillets automatique</div>
   <div class="id-block">
@@ -654,12 +663,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M04 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-fac-m05">
+  <div class="fiche-actions"><button onclick="printFiche('fs-fac-m05')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-fac-m05')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M05 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Matic Ares 5000 Plus Sign — Traceur de découpe grand format</div>
   <div class="id-block">
@@ -699,12 +708,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M05 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-fac-m06">
+  <div class="fiche-actions"><button onclick="printFiche('fs-fac-m06')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-fac-m06')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-FAC-M06 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Matic Type P27 Sensitive — Traceur de découpe matériaux sensibles</div>
   <div class="id-block">
@@ -741,13 +750,13 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M06 v1.0 — Mai 2026</span></div>
 </div>
 
 <!-- ===================== DÉCOUPE ===================== -->
 <div class="fiche" id="fs-dec-m01">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m01')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m01')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M01 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Summa S2 — Traceur de découpe vinyle</div>
   <div class="id-block">
@@ -784,12 +793,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M01 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-dec-m02">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m02')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m02')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M02 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Summa S3 — Traceur de découpe vinyle haute performance</div>
   <div class="id-block">
@@ -826,12 +835,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M02 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-dec-m03">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m03')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m03')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M03 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Zünd G3 3XL-3200 — Table de découpe numérique grand format</div>
   <div class="id-block">
@@ -873,12 +882,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M03 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-dec-m04">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m04')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m04')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M04 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Zünd G3 L-3200 — Table de découpe numérique grand format</div>
   <div class="id-block">
@@ -917,12 +926,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M04 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-dec-m05">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m05')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m05')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M05 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">MultiCam Apex 3 Revo — Table de découpe CNC grand format</div>
   <div class="id-block">
@@ -962,12 +971,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M05 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-dec-m06">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m06')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m06')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M06 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">⚠️ Trotec Speedy 400 flexx — Laser CO₂ découpe et gravure (CLASSE 4)</div>
   <div class="id-block">
@@ -1011,12 +1020,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M06 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-dec-m07">
+  <div class="fiche-actions"><button onclick="printFiche('fs-dec-m07')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-dec-m07')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-DEC-M07 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">⚠️ Striebig Evolution 18 — Scie verticale à panneaux</div>
   <div class="id-block">
@@ -1059,13 +1068,13 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M07 v1.0 — Mai 2026</span></div>
 </div>
 
 <!-- ===================== TEXTILE ===================== -->
 <div class="fiche" id="fs-tex-m01">
+  <div class="fiche-actions"><button onclick="printFiche('fs-tex-m01')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-tex-m01')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-TEX-M01-04 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Brodeuses Tajima — Machines à broder industrielles multi-têtes</div>
   <div class="id-block">
@@ -1113,12 +1122,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M01-04 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-tex-m05">
+  <div class="fiche-actions"><button onclick="printFiche('fs-tex-m05')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-tex-m05')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-TEX-M05-07 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Presses Drucktech — Presses à transfert thermique textile</div>
   <div class="id-block">
@@ -1165,12 +1174,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M05-07 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-tex-m08">
+  <div class="fiche-actions"><button onclick="printFiche('fs-tex-m08')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-tex-m08')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-TEX-M08-11 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Machines à coudre industrielles — Postes de couture</div>
   <div class="id-block">
@@ -1219,13 +1228,13 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M08-11 v1.0 — Mai 2026</span></div>
 </div>
 
 <!-- ===================== LOGISTIQUE ===================== -->
 <div class="fiche" id="fs-log-m01">
+  <div class="fiche-actions"><button onclick="printFiche('fs-log-m01')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-log-m01')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ APPAREIL<br>Réf. : FS-LOG-M01 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Still FM-Q25 — Chariot élévateur électrique frontal</div>
   <div class="id-block">
@@ -1265,12 +1274,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M01 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-log-m02">
+  <div class="fiche-actions"><button onclick="printFiche('fs-log-m02')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-log-m02')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ APPAREIL<br>Réf. : FS-LOG-M02 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Toyota Traigo48 18 — Chariot élévateur électrique frontal 1,8 T</div>
   <div class="id-block">
@@ -1310,12 +1319,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M02 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-log-m03">
+  <div class="fiche-actions"><button onclick="printFiche('fs-log-m03')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-log-m03')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ APPAREIL<br>Réf. : FS-LOG-M03 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Kärcher B60W Bp — Autolaveuse sol autoportante à batterie</div>
   <div class="id-block">
@@ -1354,7 +1363,6 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M03 v1.0 — Mai 2026</span></div>
 </div>
@@ -1362,6 +1370,7 @@
 
 <!-- ===================== MATÉRIEL DE POSE ===================== -->
 <div class="fiche" id="fs-pose-m01">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m01')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m01')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M01 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth ABS 18 Compact — Perceuse-visseuse sans fil</div>
   <div class="id-block">
@@ -1403,12 +1412,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M01 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m02">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m02')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m02')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M02 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth ABH 18 Compact — Perforateur sans fil Ø26mm</div>
   <div class="id-block">
@@ -1451,12 +1460,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M02 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m03">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m03')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m03')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M03 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth ABH 18 Compact SDS+ — Perforateur lourd brushless</div>
   <div class="id-block">
@@ -1500,12 +1509,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M03 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m04">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m04')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m04')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M04 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth ASS 18-1/4" Compact — Visseuse à chocs sans fil</div>
   <div class="id-block">
@@ -1546,12 +1555,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M04 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m05">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m05')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m05')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M05 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth AMG 18 Compact — Clé à chocs sans fil</div>
   <div class="id-block">
@@ -1592,12 +1601,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M05 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m06">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m06')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m06')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M06 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth ANG 18 Compact — Riveteuse sans fil</div>
   <div class="id-block">
@@ -1638,12 +1647,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M06 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m07">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m07')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m07')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M07 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Würth Mélangeur / Foreuse 18V — Malaxage colle & enduit</div>
   <div class="id-block">
@@ -1685,12 +1694,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M07 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m08">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m08')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m08')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M08 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">⚠️ Hilti AG 6D-22-150 — Meuleuse d'angle sans fil Ø150mm</div>
   <div class="id-block">
@@ -1735,12 +1744,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M08 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m09">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m09')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m09')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M09 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Hilti NHG 6-22 — Souffleur thermique sans fil</div>
   <div class="id-block">
@@ -1781,12 +1790,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M09 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m10">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m10')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m10')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M10 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Hilti — Pistolet à air chaud filaire 230V</div>
   <div class="id-block">
@@ -1827,12 +1836,12 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M10 v1.0 — Mai 2026</span></div>
 </div>
 
 <div class="fiche" id="fs-pose-m11">
+  <div class="fiche-actions"><button onclick="printFiche('fs-pose-m11')">🖨️ Imprimer</button><button class="dl" onclick="downloadFiche('fs-pose-m11')">⬇️ Télécharger PDF</button></div>
   <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M11 — v1.0<br>Mai 2026</div></div>
   <div class="machine-banner">Bosch GST 18 V-LI Professional — Scie sauteuse sans fil</div>
   <div class="id-block">
@@ -1875,7 +1884,6 @@
   <div class="signatures">
     <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div></div>
     <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Responsable</div><div class="sign-line"></div></div>
-    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div></div>
   </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M11 v1.0 — Mai 2026</span></div>
 </div>
@@ -1898,6 +1906,38 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.fiche, .sommaire').forEach(f => observer.observe(f));
 
 // Print current visible fiche
+
+function printFiche(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const title = el.querySelector('.machine-banner') ? el.querySelector('.machine-banner').textContent.trim() : id;
+  const w = window.open('','_blank');
+  w.document.write('<html><head><title>'+title+'</title><style>'+
+    '*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5pt;color:#222}'+
+    document.querySelector('style').textContent+
+    '.fiche-actions{display:none!important}'+
+    '</style></head><body>'+el.outerHTML+'</body></html>');
+  w.document.close();
+  setTimeout(function(){w.print();},400);
+}
+
+function downloadFiche(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const title = el.querySelector('.machine-banner') ? el.querySelector('.machine-banner').textContent.trim() : id;
+  const html = '<html><head><meta charset="UTF-8"><title>'+title+'</title><style>'+
+    '*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5pt;color:#222}'+
+    document.querySelector('style').textContent+
+    '.fiche-actions{display:none!important}'+
+    '</style></head><body>'+el.outerHTML+'</body></html>';
+  const blob = new Blob([html],{type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = id+'.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
 function printCurrent(){
   const active = document.querySelector('#nav a.active');
   if(!active){alert('Navigue vers une fiche pour l\'imprimer individuellement.');return;}
