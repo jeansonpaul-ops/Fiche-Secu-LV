@@ -58,6 +58,13 @@
   .machines-list{display:flex;gap:7px;flex-wrap:wrap;padding:7px 0 2px}
   .machine-tag{background:#1F3A5F;color:#fff;border-radius:3px;padding:2px 8px;font-size:8.5pt}
   .fiche-footer{background:#1F3A5F;color:#aac8e0;padding:5px 18px;font-size:7.5pt;display:flex;justify-content:space-between}
+  .signatures{display:flex;gap:0;border-top:2px solid #1F3A5F}
+  .sign-cell{flex:1;padding:8px 12px 26px;border-right:1px solid #ddd;font-size:8pt}
+  .sign-cell:last-child{border-right:none}
+  .sign-cell .sign-role{color:#1F3A5F;font-weight:bold;font-size:8pt;text-transform:uppercase;margin-bottom:3px}
+  .sign-cell .sign-sub{color:#888;font-size:7pt}
+  .sign-cell .sign-line{margin-top:18px;border-bottom:1px dotted #999}
+  .sign-cell .sign-date{margin-top:4px;color:#888;font-size:7pt}
 
   /* SOMMAIRE */
   .sommaire{max-width:800px;margin:0 auto 40px;background:#fff;border:2px solid #1F3A5F;padding:0}
@@ -116,11 +123,23 @@
   <a href="#fs-log-m01">Still FM-Q25</a>
   <a href="#fs-log-m02">Toyota Traigo48 18</a>
   <a href="#fs-log-m03">Kärcher B60W Bp</a>
+  <div class="cat">🔧 Matériel de pose</div>
+  <a href="#fs-pose-m01">Würth ABS 18 Compact</a>
+  <a href="#fs-pose-m02">Würth ABH 18 Compact</a>
+  <a href="#fs-pose-m03">Würth ABH 18 SDS+</a>
+  <a href="#fs-pose-m04">Würth ASS 18-1/4"</a>
+  <a href="#fs-pose-m05">Würth AMG 18 Compact</a>
+  <a href="#fs-pose-m06">Würth ANG 18 Compact</a>
+  <a href="#fs-pose-m07">Würth Mélangeur 18V</a>
+  <a href="#fs-pose-m08">Hilti AG 6D-22-150 ⚠️</a>
+  <a href="#fs-pose-m09">Hilti NHG 6-22</a>
+  <a href="#fs-pose-m10">Hilti Pistolet thermique</a>
+  <a href="#fs-pose-m11">Bosch GST 18 V-LI</a>
 </div>
 
 <!-- TOOLBAR -->
 <div id="toolbar">
-  <div class="title">LuxVisual — Fiches Sécurité Machines (25 fiches)</div>
+  <div class="title">LuxVisual — Fiches Sécurité Machines (36 fiches)</div>
   <button onclick="window.print()">🖨️ Imprimer tout</button>
   <button class="sec" onclick="printCurrent()">🖨️ Imprimer fiche active</button>
 </div>
@@ -133,7 +152,7 @@
     <div class="logo">Lux<span>Visual</span></div>
     <div style="text-align:right;font-size:8.5pt;color:#aac8e0;line-height:1.5">DOCUMENT SÉCURITÉ INTERNE<br>Réf. : FS-SOMMAIRE — v1.0<br>Mai 2026</div>
   </div>
-  <div class="sommaire-title">Sommaire — 25 Fiches Sécurité Machines</div>
+  <div class="sommaire-title">Sommaire — 36 Fiches Sécurité Machines</div>
   <div class="sommaire-body">
     <div class="sommaire-cat">🖨️ Impression</div>
     <div class="sommaire-row"><span class="ref">FS-IMP-M03</span><span>Swissqprint Nyala 2i LED — Imprimante UV LED grand format</span></div>
@@ -165,6 +184,18 @@
     <div class="sommaire-row"><span class="ref">FS-LOG-M01</span><span>Still FM-Q25 — Chariot élévateur électrique (CACES R489)</span></div>
     <div class="sommaire-row"><span class="ref">FS-LOG-M02</span><span>Toyota Traigo48 18 — Chariot élévateur électrique 1,8 T (CACES R489)</span></div>
     <div class="sommaire-row"><span class="ref">FS-LOG-M03</span><span>Kärcher B60W Bp — Autolaveuse sol autoportante</span></div>
+    <div class="sommaire-cat">🔧 Matériel de pose (outillage électroportatif)</div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M01</span><span>Würth ABS 18 Compact — Perceuse-visseuse sans fil</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M02</span><span>Würth ABH 18 Compact — Perforateur sans fil Ø26mm</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M03</span><span>Würth ABH 18 Compact SDS+ — Perforateur lourd brushless</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M04</span><span>Würth ASS 18-1/4" Compact — Visseuse à chocs sans fil</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M05</span><span>Würth AMG 18 Compact — Clé à chocs sans fil</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M06</span><span>Würth ANG 18 Compact — Riveteuse sans fil</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M07</span><span>Würth Mélangeur / Foreuse 18V — Malaxage colle/enduit</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M08</span><span>⚠️ Hilti AG 6D-22-150 — Meuleuse d'angle sans fil Ø150mm</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M09</span><span>Hilti NHG 6-22 — Souffleur thermique sans fil</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M10</span><span>Hilti — Pistolet à air chaud filaire 230V</span></div>
+    <div class="sommaire-row"><span class="ref">FS-POSE-M11</span><span>Bosch GST 18 V-LI Professional — Scie sauteuse sans fil</span></div>
     <div style="margin-top:16px;padding:10px;background:#eef4f8;border-left:4px solid #00B4D8;font-size:9pt">
       <strong>Numéros d'urgence :</strong> 112 (urgences) &nbsp;|&nbsp; Travailleur Désigné : _______________ &nbsp;|&nbsp; Responsable atelier : _______________ &nbsp;|&nbsp; Médecin du travail : _______________
     </div>
@@ -213,6 +244,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Contact encre :</strong> Laver au savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112 si persistance. <strong>Écrasement :</strong> Arrêt urgence — 112. <strong>Inhalation :</strong> Air frais — 112 si nécessaire.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M03 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -256,6 +292,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Contact encre :</strong> Laver au savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Écrasement :</strong> Arrêt urgence — 112. <strong>Surmenage :</strong> Repos, informer responsable.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M04 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -293,6 +334,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Contact encre :</strong> Rincer à l'eau. <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Coincement :</strong> Arrêt machine — 112 si bloquée. <strong>Chute rouleau :</strong> Évaluer — 112 si douleur dorsale.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M05 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -333,6 +379,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Inhalation :</strong> Air frais — 112 si malaise. <strong>Contact cutané :</strong> Laver eau + savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Incendie :</strong> Alarme, évacuation, extincteur CO₂ — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M06 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -371,6 +422,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Contact encre :</strong> Laver eau + savon. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M07 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -415,6 +471,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Brûlure thermique :</strong> Eau froide 15 min — NE PAS percer les cloques — 112 si étendue. <strong>Entraînement :</strong> Arrêt urgence — NE PAS tirer — 112. <strong>Inhalation :</strong> Air frais — 112. <strong>Brûlure vapeur :</strong> Eau froide — 112 si voies respiratoires.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-IMP-M08 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -459,6 +520,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Entraînement :</strong> Arrêt urgence — NE PAS tirer — 112. <strong>Brûlure :</strong> Eau froide 15 min — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M01 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -497,6 +563,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Écrasement :</strong> Arrêt urgence — NE PAS tirer — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Chute panneau :</strong> Ne pas déplacer si choc — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M02 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -536,6 +607,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Écrasement membre :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Chute panneau :</strong> Éloigner, ne pas déplacer — 112. <strong>Coupure :</strong> Comprimer — 112 si profonde.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M03 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -575,6 +651,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Perforation doigt :</strong> Si outil planté — NE PAS retirer — 112. Sinon : comprimer, désinfecter, consulter. <strong>Projection oculaire :</strong> Rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M04 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -615,6 +696,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde/saignement. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Écrasement :</strong> Arrêt urgence — NE PAS déplacer — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M05 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -652,6 +738,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement :</strong> Arrêt urgence — 112. <strong>Chute rouleau :</strong> Évaluer — 112 si douleur dorsale.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-FAC-M06 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -690,6 +781,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Coincement :</strong> Arrêt machine — 112 si bloquée. <strong>Chute rouleau :</strong> Évaluer — 112 si douleur dorsale.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M01 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -727,6 +823,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Coincement :</strong> Arrêt machine — 112 si bloquée.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M02 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -769,6 +870,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement portique :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Projection oculaire :</strong> Rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M03 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -808,6 +914,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Projection oculaire :</strong> Rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M04 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -848,6 +959,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure :</strong> Comprimer — 112 si profonde. <strong>Écrasement :</strong> Arrêt urgence — NE PAS déplacer — 112. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Traumatisme sonore :</strong> Arrêt exposition — ORL.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M05 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -892,6 +1008,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Exposition oculaire laser :</strong> Ne pas frotter — couvrir l'œil — 112 immédiatement. <strong>Brûlure cutanée :</strong> Eau froide 15 min — 112. <strong>Incendie enceinte :</strong> Arrêt urgence — NE PAS ouvrir — extincteur CO₂ — 112. <strong>Inhalation fumées :</strong> Air frais — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M06 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -935,6 +1056,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Coupure/amputation :</strong> Comprimer fortement. Amputation : fragment dans linge propre et froid — 112 immédiatement. <strong>Projection oculaire :</strong> Rinçage 15 min — 112. <strong>Chute panneau :</strong> NE PAS déplacer — dégager si possible sans risque — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-DEC-M07 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -984,6 +1110,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Piqûre aiguille :</strong> Si plantée — NE PAS retirer — 112. Sinon : nettoyer, désinfecter, consulter. <strong>Projection oculaire :</strong> Ne pas frotter — rinçage 15 min — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M01-04 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -1031,6 +1162,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Brûlure thermique :</strong> Eau froide 15 min — NE PAS percer — 112 si étendue. <strong>Brûlure vapeur voies resp. :</strong> Air frais — 112. <strong>Écrasement mains :</strong> Arrêt urgence — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M05-07 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -1080,6 +1216,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Piqûre aiguille :</strong> Si plantée — NE PAS retirer — 112. Sinon : nettoyer, désinfecter, consulter. <strong>Douleur TMS aiguë :</strong> Arrêt activité — signaler responsable — médecin du travail sous 24h.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-TEX-M08-11 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -1121,6 +1262,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Renversement :</strong> Rester dans le poste, s'agripper, se pencher côté opposé — 112. <strong>Piéton heurté :</strong> Arrêt — NE PAS déplacer — 112. <strong>Chute charge :</strong> Éloigner les personnes — 112 si blessé.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M01 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -1161,6 +1307,11 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Renversement :</strong> S'agripper, se pencher côté opposé — 112. <strong>Piéton heurté :</strong> Arrêt — NE PAS déplacer — 112. <strong>Incendie batterie :</strong> Évacuer — extincteur CO₂ — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M02 v1.0 — Mai 2026</span></div>
 </div>
 
@@ -1200,8 +1351,535 @@
   <section><h2>🚨 Urgences</h2><div class="urgence">
     <strong>Glissade/chute :</strong> Évaluer — si douleur dorsale/cervicale : NE PAS déplacer — 112. <strong>Contact détergent yeux :</strong> Rinçage 15 min — consulter médecin. <strong>Collision piéton :</strong> Arrêt — NE PAS déplacer si choc important — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
   </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
   <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-LOG-M03 v1.0 — Mai 2026</span></div>
 </div>
+
+
+<!-- ===================== MATÉRIEL DE POSE ===================== -->
+<div class="fiche" id="fs-pose-m01">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M01 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth ABS 18 Compact — Perceuse-visseuse sans fil</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M01</div>
+    <div class="id-cell"><div class="label">Réf. / Tension</div>5701 427 00X — 18V</div>
+    <div class="id-cell"><div class="label">Localisation</div>Chantiers / camionnettes</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Entraînement / coincement / rebond</td><td>Mèche en rotation</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Projection d'éclats (métal, bois, plâtre)</td><td>Perçage</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit > 85 dB(A) sur matériaux durs</td><td>Perçage prolongé</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Vibrations (TMS poignets)</td><td>Perçages répétitifs</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Chute de l'outil (travail en hauteur)</td><td>Échelle / escabeau</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Électrique (batterie endommagée)</td><td>Batterie Li-Ion</td><td>⚠️ Faible</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants (EN 388)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Protection auditive (>30 min)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'état du mandrin et de la mèche avant utilisation.</li>
+    <li>S'assurer de l'absence de câbles / conduites dans le support à percer.</li>
+    <li>Serrer fermement la mèche avant mise en marche.</li>
+    <li>Maintenir l'outil à deux mains dans les matériaux durs.</li>
+    <li>Ne jamais bloquer la gâchette en marche continue.</li>
+    <li>Retirer la batterie pour tout changement d'accessoire.</li>
+    <li>Ne pas utiliser une batterie gonflée ou endommagée.</li>
+  </ol>
+  <div class="encart-orange"><h3>⚡ Travaux en hauteur</h3><ul>
+    <li>Sur échelle ou escabeau : se stabiliser avant de percer, ne pas tendre le bras au-delà de l'équilibre.</li>
+    <li>Utiliser une dragonne / ceinture porte-outil pour éviter la chute de l'outil sur des tiers.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Blessure par mèche :</strong> arrêt outil, retrait batterie — NE PAS extraire un corps étranger profond — compression — 112. <strong>Projection oculaire :</strong> rinçage 15 min — consulter sans délai.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M01 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m02">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M02 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth ABH 18 Compact — Perforateur sans fil Ø26mm</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M02</div>
+    <div class="id-cell"><div class="label">Réf. / Tension</div>5701 403 00X — 18V</div>
+    <div class="id-cell"><div class="label">Localisation</div>Chantiers / installation</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Vibrations HAV (TMS membres supérieurs)</td><td>Percussion prolongée</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit > 100 dB(A)</td><td>Percussion béton</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Projection d'éclats / poussières silicatées</td><td>Perçage béton</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Rebond (kick-back) au coincement du trépan</td><td>Blocage foret</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Poussières silice (silicose)</td><td>Béton / brique sans aspiration</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Électrique (câble encastré)</td><td>Cloison sous tension</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes anti-projection</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2 (silice)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Casque anti-bruit obligatoire</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-vibration</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Détecter câbles et conduites (détecteur de câbles) avant perçage.</li>
+    <li>Activer le mode percussion uniquement si le matériau l'exige.</li>
+    <li>Tenir fermement avec la poignée latérale montée.</li>
+    <li>Ne pas forcer — laisser l'outil travailler à vitesse adaptée.</li>
+    <li>Pauses régulières pour limiter l'exposition aux vibrations HAV.</li>
+    <li>Aspirer ou mouiller la zone si perçage béton intensif.</li>
+    <li>Retirer la batterie avant changement d'accessoire.</li>
+  </ol>
+  <div class="encart-orange"><h3>🌫️ Poussières de silice cristalline (RCS)</h3><ul>
+    <li>Le perçage béton/brique génère de la silice cristalline libre — exposition chronique = silicose irréversible.</li>
+    <li>Masque FFP2 minimum obligatoire ; aspiration à la source pour usage intensif (>10 perçages/jour ou espace confiné).</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Rebond / coincement :</strong> lâcher l'outil, couper la batterie. <strong>Blessure :</strong> compression — 112. <strong>Poussières yeux :</strong> rinçage 15 min. <strong>Inhalation massive :</strong> consulter médecin, signaler exposition silice.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M02 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m03">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M03 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth ABH 18 Compact SDS+ — Perforateur lourd brushless</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M03</div>
+    <div class="id-cell"><div class="label">Réf. / Tension</div>5701 432 002 — 18V</div>
+    <div class="id-cell"><div class="label">Fixation</div>SDS-Plus (brushless)</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Vibrations HAV sévères</td><td>Mode burinage / percussion</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit > 100 dB(A)</td><td>Mode percussion</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Projection d'éclats béton à grande vitesse</td><td>Perçage / burinage</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Rebond (kick-back)</td><td>Blocage trépan sur armature</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Poussières silice</td><td>Perçage béton sans protection</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Chute de l'outil (poids élevé)</td><td>Fatigue en hauteur</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (EN 166)</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2 (silice)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Casque anti-bruit obligatoire</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-vibration</div>
+    <div class="epi-item"><span class="icon">⛑️</span>Casque si chute d'objet</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier le mode sélectionné (rotation / percussion / burinage) avant mise en marche.</li>
+    <li>Utiliser la poignée latérale pour tout perçage > Ø16 mm.</li>
+    <li>Détecter les réseaux encastrés avant perçage mural.</li>
+    <li>Limiter le burinage à 15 min consécutives (vibrations).</li>
+    <li>S'assurer qu'aucun tiers ne se trouve sous la zone de travail.</li>
+    <li>Lubrifier régulièrement les trépans SDS+.</li>
+    <li>Signaler toute anomalie moteur (odeur, surchauffe).</li>
+  </ol>
+  <div class="encart-orange"><h3>🔁 Mode burinage — vibrations très élevées</h3><ul>
+    <li>Durée max recommandée : 15 min sans interruption, puis pause de 10 min.</li>
+    <li>Surveiller tout signe de syndrome des vibrations (fourmillements, blanchiment des doigts) et déclarer au médecin du travail.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coincement brutal :</strong> lâcher immédiatement, couper la batterie — ne pas débloquer à la main. <strong>Blessure ouverte :</strong> compression — 112. <strong>Chute en hauteur :</strong> ne pas déplacer la victime — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M03 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m04">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M04 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth ASS 18-1/4" Compact — Visseuse à chocs sans fil</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M04</div>
+    <div class="id-cell"><div class="label">Réf. / Tension</div>5701 415 00X — 18V</div>
+    <div class="id-cell"><div class="label">Embout</div>1/4" HEX</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Projection d'embout HEX mal fixé</td><td>Mécanisme à chocs</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit > 90 dB(A) en continu</td><td>Mécanisme à chocs</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Vibrations (TMS poignets)</td><td>Chocs répétitifs</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Sur-serrage / rupture de vis</td><td>Couple excessif</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Électrique (batterie endommagée)</td><td>Batterie Li-Ion</td><td>⚠️ Faible</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants (EN 388)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Protection auditive (>30 min)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'encliquetage de l'embout HEX avant chaque usage.</li>
+    <li>Sélectionner la bonne vitesse selon le matériau.</li>
+    <li>Ne pas pointer l'outil vers des tiers lors de la mise en marche.</li>
+    <li>Éviter le sur-serrage — risque de casse de la vis.</li>
+    <li>Utiliser uniquement des embouts compatibles 1/4" HEX.</li>
+    <li>Inspecter régulièrement les embouts (usure, déformation).</li>
+    <li>Retirer la batterie si l'outil reste inutilisé > 10 min.</li>
+  </ol>
+  <div class="encart-orange"><h3>💥 Mécanisme à chocs</h3><ul>
+    <li>Impulsions de couple très élevées : ne jamais mettre la main dans l'axe de travail.</li>
+    <li>Vérifier systématiquement le verrouillage de l'embout — risque de projection.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Projection d'embout :</strong> protéger la plaie, consulter si pénétration. <strong>Trauma main/doigts :</strong> immobiliser, froid, urgences. <strong>Douleurs articulaires persistantes :</strong> signaler au médecin du travail (TMS).<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M04 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m05">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M05 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth AMG 18 Compact — Clé à chocs sans fil</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M05</div>
+    <div class="id-cell"><div class="label">Réf. / Tension</div>5701 423 00X — 18V</div>
+    <div class="id-cell"><div class="label">Entraînement</div>Carré 1/2"</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Projection de douille ou boulon</td><td>Impact</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit > 95 dB(A)</td><td>Chocs métalliques répétés</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Coincement / rebond violent</td><td>Douille sur boulon corrodé</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Sur-serrage / rupture filetage</td><td>Couple non maîtrisé</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Vibrations (TMS)</td><td>Utilisation intensive</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants résistants</div>
+    <div class="epi-item"><span class="icon">🎧</span>Casque anti-bruit obligatoire</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Utiliser uniquement des douilles à chocs (impact sockets) — jamais de douilles chrome standard.</li>
+    <li>Vérifier l'emboîtement de la douille sur le carré 1/2".</li>
+    <li>Maintenir l'outil perpendiculaire à la fixation.</li>
+    <li>Vérifier le couple final avec clé dynamométrique si critique.</li>
+    <li>Porter les lunettes — risque de projection douille / écrou.</li>
+    <li>Pause après 30 min de serrage intensif.</li>
+    <li>Inspecter les douilles avant usage (fissures, déformation).</li>
+  </ol>
+  <div class="encart-orange"><h3>🔩 Couple élevé non maîtrisé</h3><ul>
+    <li>Pour les assemblages de structure nécessitant un couple précis : vérifier au couplemètre après serrage.</li>
+    <li>Ne jamais utiliser pour des fixations de sécurité critiques sans contrôle dynamométrique.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Projection de douille :</strong> évaluer la blessure, protéger plaie ouverte. <strong>Rebond violent :</strong> fracture possible — immobiliser — 112. <strong>Trouble auditif soudain :</strong> consulter ORL sous 24h.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M05 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m06">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M06 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth ANG 18 Compact — Riveteuse sans fil</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M06</div>
+    <div class="id-cell"><div class="label">Réf. / Tension</div>5701 423 00X — 18V</div>
+    <div class="id-cell"><div class="label">Usage</div>Rivets aveugles</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Projection de tige de rivet (arrière)</td><td>Rivetage</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Coincement doigt dans le mécanisme</td><td>Traction</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit impulsionnel > 90 dB</td><td>Claquement rivet</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Coupure / lacération</td><td>Bords de tôle</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Posture contrainte (TMS)</td><td>Travail en hauteur / espace réduit</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (obligatoires)</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure (EN 388)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Protection auditive (usage soutenu)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Lunettes portées AVANT mise en charge de l'outil.</li>
+    <li>Vérifier que le diamètre du rivet est compatible avec l'embout.</li>
+    <li>Ne jamais diriger l'outil vers une personne.</li>
+    <li>Évacuer la zone de projection de tige avant rivetage.</li>
+    <li>Vider régulièrement le collecteur de tiges.</li>
+    <li>Porter les gants lors de la manipulation des tôles.</li>
+    <li>Retirer la batterie pour toute intervention sur l'outil.</li>
+  </ol>
+  <div class="encart-orange"><h3>🎯 Projection de tiges</h3><ul>
+    <li>La tige du rivet est éjectée vers l'arrière avec force : ne jamais se placer dans l'axe arrière de l'outil.</li>
+    <li>Le collecteur de tiges doit être en place et non plein.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Projection oculaire :</strong> rinçage 15 min — consultation ophtalmologique urgente. <strong>Coupure tôle :</strong> nettoyage, pansement compressif. <strong>Coincement doigt :</strong> NE PAS forcer — secours si blocage.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M06 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m07">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M07 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Würth Mélangeur / Foreuse 18V — Malaxage colle & enduit</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M07</div>
+    <div class="id-cell"><div class="label">Tension</div>18V — Würth Master</div>
+    <div class="id-cell"><div class="label">Usage</div>Malaxage / perçage Ø grand</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Rebond brutal (rotation inverse)</td><td>Blocage malaxeur dans la colle</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Projection (colle, résine, enduit)</td><td>Malaxage</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Contact chimique cutané/oculaire</td><td>Colles acryliques, résines</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Vibrations (TMS poignets/épaules)</td><td>Malaxage prolongé</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Bruit (charge moteur élevée)</td><td>Outil grand format</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (éclaboussures)</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants chimiques (EN 374)</div>
+    <div class="epi-item"><span class="icon">👕</span>Tablier de protection</div>
+    <div class="epi-item"><span class="icon">🎧</span>Protection auditive (prolongé)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Démarrer à vitesse lente puis augmenter progressivement.</li>
+    <li>Tenir l'outil à deux mains, poignée latérale obligatoire.</li>
+    <li>Ne jamais immerger le malaxeur au-delà du produit.</li>
+    <li>Arrêter la rotation avant de retirer le malaxeur du seau (projection).</li>
+    <li>Consulter la FDS du produit malaxé avant usage.</li>
+    <li>Nettoyer immédiatement après usage (ne pas laisser durcir).</li>
+    <li>Retirer la batterie avant nettoyage ou changement de malaxeur.</li>
+  </ol>
+  <div class="encart-orange"><h3>🧪 Produits chimiques — FDS obligatoire</h3><ul>
+    <li>Colles structurales, résines et primaires peuvent être irritants, sensibilisants ou corrosifs.</li>
+    <li>Consulter impérativement la Fiche de Données de Sécurité avant tout malaxage — gants chimiques obligatoires.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Rebond violent :</strong> lâcher immédiatement — si blessure bras/poignet : 112. <strong>Projection oculaire colle :</strong> rinçage 15 min — ophtalmologue. <strong>Contact cutané :</strong> rinçage eau-savon, consulter FDS.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M07 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m08">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M08 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">⚠️ Hilti AG 6D-22-150 — Meuleuse d'angle sans fil Ø150mm</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code / FFE</div>POSE-M08 / 2215518</div>
+    <div class="id-cell"><div class="label">Tension / Vitesse</div>21,6V — 8500 min⁻¹</div>
+    <div class="id-cell"><div class="label">Disque max</div>Ø150mm — M14</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Éclatement de disque (projection fragments)</td><td>Disque fissuré / mal monté</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Coupure / lacération</td><td>Contact disque rotatif</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Rebond (kick-back)</td><td>Coincement en cours de coupe</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Projection d'étincelles (incendie)</td><td>Meulage / tronçonnage métal</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit > 100 dB(A)</td><td>Meulage</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Poussières silice / métaux</td><td>Béton / métal</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Vibrations HAV 8,7 m/s² (déclaré)</td><td>Usage prolongé</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🥽</span>Visière intégrale (obligatoire)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Casque anti-bruit obligatoire</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure niv. 5</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP2</div>
+    <div class="epi-item"><span class="icon">👕</span>Tablier cuir / ignifugé</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'état du disque avant CHAQUE utilisation (fissures, fixation).</li>
+    <li>Garde de protection OBLIGATOIRE — ne jamais la retirer.</li>
+    <li>Vérifier que la vitesse max du disque ≥ 8500 RPM.</li>
+    <li>Ne jamais couper avec un disque de meulage (et inversement).</li>
+    <li>Dégager les matériaux inflammables dans un rayon de 5 m.</li>
+    <li>Ne pas travailler en direction du corps.</li>
+    <li>Attendre l'arrêt complet avant de poser l'outil.</li>
+  </ol>
+  <div class="encart-red"><h3>🔴 DANGER — Éclatement de disque</h3><ul>
+    <li>Un disque endommagé, mal monté ou inadapté peut éclater à 8500 RPM et projeter des fragments sur plusieurs mètres.</li>
+    <li>Vérification obligatoire avant chaque usage. Visière intégrale impérative — les lunettes simples ne suffisent pas.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure profonde :</strong> compression immédiate — NE PAS retirer corps étranger — 112. <strong>Projection oculaire :</strong> rinçage 15 min — urgences ophtalmologiques. <strong>Incendie étincelles :</strong> extincteur CO₂ — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M08 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m09">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M09 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Hilti NHG 6-22 — Souffleur thermique sans fil</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE — Installation</div>
+    <div class="id-cell"><div class="label">Code / FFE</div>POSE-M09 / 2352761</div>
+    <div class="id-cell"><div class="label">Tension</div>21,6V (système B22)</div>
+    <div class="id-cell"><div class="label">Usage</div>Pose vinyle, rétraction films</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Brûlure thermique (buse > 300°C)</td><td>Contact buse / flux d'air chaud</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Incendie</td><td>Direction vers matériaux inflammables</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Émanations HCl (PVC chauffé)</td><td>Décomposition thermique films</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Brûlure indirecte</td><td>Surface traitée brûlante</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Électrique (surchauffe batterie)</td><td>Batterie endommagée</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-chaleur (EN 407)</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque vapeurs organiques (PVC)</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (chaleur rayonnante)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Ne jamais diriger vers des personnes ou des matériaux inflammables.</li>
+    <li>Laisser refroidir 5 min avant rangement (buse reste brûlante).</li>
+    <li>Ne jamais poser l'outil en fonctionnement à plat sur une surface.</li>
+    <li>Ventiler le chantier lors du chauffage de films PVC.</li>
+    <li>Ne pas utiliser en espace confiné sans ventilation forcée.</li>
+    <li>Extincteur CO₂ à portée de main.</li>
+    <li>Ne jamais laisser l'outil sans surveillance en fonctionnement.</li>
+  </ol>
+  <div class="encart-orange"><h3>🌫️ Vapeurs de PVC chauffé</h3><ul>
+    <li>Le chauffage du vinyle au-delà de 180°C dégage du chlorure d'hydrogène (HCl) et des COV.</li>
+    <li>Espace confiné ou usage prolongé : masque demi-faciès cartouche vapeurs organiques + ventilation indispensables.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Brûlure :</strong> refroidir 15 min eau froide, ne pas percer les cloques, couvrir — urgences si > 1% surface. <strong>Inhalation fumées PVC :</strong> air frais — 112 si malaise persistant.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M09 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m10">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M10 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Hilti — Pistolet à air chaud filaire 230V</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE / Atelier</div>
+    <div class="id-cell"><div class="label">Code</div>POSE-M10</div>
+    <div class="id-cell"><div class="label">Alimentation</div>230V AC (câble secteur)</div>
+    <div class="id-cell"><div class="label">Usage</div>Pose vinyle, rétraction</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Brûlure thermique (buse jusqu'à 600°C)</td><td>Buse / flux d'air chaud</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Électrocution</td><td>Câble endommagé, humidité</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Incendie</td><td>Matériaux inflammables, câble surchauffé</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Émanations PVC/polyester chauffés</td><td>Décomposition films</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Trébuchement</td><td>Câble d'alimentation sur chantier</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-chaleur (EN 407)</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque vapeurs org. (PVC)</div>
+    <div class="epi-item"><span class="icon">👓</span>Lunettes</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. isolantes</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'intégrité du câble d'alimentation avant chaque usage.</li>
+    <li>Utiliser une rallonge homologuée de section adaptée.</li>
+    <li>Ne jamais utiliser sous la pluie ou humidité excessive.</li>
+    <li>Sur chantier : disjoncteur différentiel 30 mA obligatoire.</li>
+    <li>Poser sur support adapté pendant les pauses (jamais à plat).</li>
+    <li>Laisser refroidir 15 min minimum avant rangement.</li>
+    <li>Sécuriser le câble pour éviter les trébuchements ; ne pas couvrir les ouïes de ventilation.</li>
+  </ol>
+  <div class="encart-red"><h3>⚡ Risque électrique sur chantier</h3><ul>
+    <li>Outil alimenté en 230V AC : risque d'électrocution si câble endommagé ou contact avec eau.</li>
+    <li>Disjoncteur différentiel 30 mA obligatoire en extérieur — vérifier l'état du câble à chaque utilisation.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Électrocution :</strong> COUPER L'ALIMENTATION avant tout secours — ne pas toucher la victime sous tension — 112. <strong>Brûlure :</strong> refroidir 15 min, couvrir, consulter. <strong>Incendie :</strong> débrancher, extincteur CO₂, évacuer.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M10 v1.0 — Mai 2026</span></div>
+</div>
+
+<div class="fiche" id="fs-pose-m11">
+  <div class="fiche-header"><div class="logo">Lux<span>Visual</span></div><div class="doc-info">FICHE SÉCURITÉ MACHINE<br>Réf. : FS-POSE-M11 — v1.0<br>Mai 2026</div></div>
+  <div class="machine-banner">Bosch GST 18 V-LI Professional — Scie sauteuse sans fil</div>
+  <div class="id-block">
+    <div class="id-cell"><div class="label">Poste</div>POSE / Atelier</div>
+    <div class="id-cell"><div class="label">Code / Réf.</div>POSE-M11 / 3601 E8J 300</div>
+    <div class="id-cell"><div class="label">Tension</div>18V — 0–2700 min⁻¹</div>
+    <div class="id-cell"><div class="label">Fab.</div>Suisse — 05/2013</div>
+  </div>
+  <section><h2>⚠️ Risques</h2><table><tr><th>Risque</th><th>Source</th><th>Niveau</th></tr>
+    <tr><td>Coupure / lacération</td><td>Lame en mouvement</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Projection d'éclats</td><td>Découpe</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Rupture de lame</td><td>Lame fatiguée / forçage</td><td>⚠️ Élevé</td></tr>
+    <tr><td>Bruit 85–95 dB(A)</td><td>Coupe bois / métal</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Vibrations (TMS poignets)</td><td>Coupes prolongées</td><td>⚠️ Modéré</td></tr>
+    <tr><td>Surchauffe / gonflement batterie ancienne</td><td>Batterie Li-Ion (2013)</td><td>⚠️ Modéré</td></tr>
+  </table></section>
+  <section><h2>🦺 EPI</h2><div class="epi-grid">
+    <div class="epi-item"><span class="icon">👓</span>Lunettes (EN 166)</div>
+    <div class="epi-item"><span class="icon">🧤</span>Gants anti-coupure (EN 388)</div>
+    <div class="epi-item"><span class="icon">🎧</span>Protection auditive (EN 352)</div>
+    <div class="epi-item"><span class="icon">😷</span>Masque FFP1 (coupe bois)</div>
+    <div class="epi-item"><span class="icon">👟</span>Chaussures sécu. S1P</div>
+  </div></section>
+  <section><h2>📋 Consignes</h2><ol>
+    <li>Vérifier l'état de la lame avant chaque utilisation.</li>
+    <li>Sélectionner la lame adaptée au matériau découpé.</li>
+    <li>Fixer solidement la pièce avant de commencer la coupe.</li>
+    <li>Appuyer le sabot sur la pièce avant d'actionner la gâchette.</li>
+    <li>Ne jamais placer les doigts sous la pièce en cours de coupe.</li>
+    <li>Vérifier l'absence de câbles encastrés (coupe de cloisons).</li>
+    <li>Attendre l'arrêt complet de la lame avant de retirer la pièce.</li>
+  </ol>
+  <div class="encart-orange"><h3>🔋 Batterie ancienne (2013 — > 10 ans)</h3><ul>
+    <li>Les batteries vieillissantes peuvent gonfler ou surchauffer (emballement thermique).</li>
+    <li>Inspecter visuellement avant chaque usage. En cas de gonflement, odeur ou chaleur anormale : ne pas utiliser, isoler en lieu sûr.</li>
+  </ul></div></section>
+  <section><h2>🚨 Urgences</h2><div class="urgence">
+    <strong>Coupure :</strong> compression, protection plaie — consulter selon profondeur. <strong>Rupture de lame :</strong> évaluer blessures — 112 si plaie profonde / oculaire. <strong>Batterie en feu :</strong> NE PAS éteindre à l'eau — sable ou CO₂, évacuer — 112.<br>📞 <strong>Urgences : 112</strong> | TD : ___________ | Responsable : ___________
+  </div></section>
+  <div class="signatures">
+    <div class="sign-cell"><div class="sign-role">Établi par</div><div class="sign-sub">Travailleur désigné</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Validé par</div><div class="sign-sub">Direction</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+    <div class="sign-cell"><div class="sign-role">Pris connaissance</div><div class="sign-sub">Opérateur / Poseur</div><div class="sign-line"></div><div class="sign-date">Nom / Date</div></div>
+  </div>
+  <div class="fiche-footer"><span>LuxVisual — Document interne confidentiel</span><span>FS-POSE-M11 v1.0 — Mai 2026</span></div>
+</div>
+
 
 </div><!-- /main -->
 
