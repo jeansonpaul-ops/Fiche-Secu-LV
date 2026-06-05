@@ -86,11 +86,29 @@
   .fiche-actions button.dl:hover{background:#0096b8}
   @media print{.fiche-actions{display:none}}
   @media print{
-    #nav,#toolbar{display:none}
+    *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+    #nav,#toolbar,.fiche-actions{display:none!important}
     #main{margin:0;padding:0}
     body{background:#fff}
-    .fiche{page-break-after:always;border:1px solid #999;margin:0}
+    .fiche{page-break-after:always;border:2px solid #1F3A5F!important;margin:0}
     .sommaire{page-break-after:always}
+    .fiche-header{background:#1F3A5F!important;color:#fff!important}
+    .fiche-header .logo{color:#fff!important}
+    .fiche-header .logo span{color:#00B4D8!important}
+    .machine-banner{background:#00B4D8!important;color:#fff!important}
+    h2{background:#eef4f8!important;color:#1F3A5F!important;border-left:4px solid #00B4D8!important}
+    th{background:#1F3A5F!important;color:#fff!important}
+    tr:nth-child(even) td{background:#f7f9fc!important}
+    .epi-item{background:#eef4f8!important;border:1px solid #00B4D8!important}
+    .encart-orange{background:#fff8e1!important;border:2px solid #f0a500!important}
+    .encart-red{background:#fff0f0!important;border:2px solid #c0392b!important}
+    .encart-blue{background:#f0f7ff!important;border:2px solid #1F3A5F!important}
+    .urgence{background:#fdecea!important;border-left:4px solid #c0392b!important}
+    .signatures{border-top:2px solid #1F3A5F!important}
+    .fiche-footer{background:#1F3A5F!important;color:#aac8e0!important}
+    .id-block{border-bottom:2px solid #1F3A5F!important}
+    .sommaire-header{background:#1F3A5F!important;color:#fff!important}
+    .sommaire-title{background:#00B4D8!important;color:#fff!important}
   }
 </style>
 </head>
@@ -1907,6 +1925,8 @@ document.querySelectorAll('.fiche, .sommaire').forEach(f => observer.observe(f))
 
 // Print current visible fiche
 
+var PRINT_EXTRA_CSS = '*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}.fiche-actions{display:none!important}#nav,#toolbar{display:none!important}.fiche{border:2px solid #1F3A5F!important;margin:0}.fiche-header{background:#1F3A5F!important;color:#fff!important}.fiche-header .logo{color:#fff!important}.fiche-header .logo span{color:#00B4D8!important}.machine-banner{background:#00B4D8!important;color:#fff!important}h2{background:#eef4f8!important;color:#1F3A5F!important;border-left:4px solid #00B4D8!important}th{background:#1F3A5F!important;color:#fff!important}tr:nth-child(even) td{background:#f7f9fc!important}.epi-item{background:#eef4f8!important;border:1px solid #00B4D8!important}.encart-orange{background:#fff8e1!important;border:2px solid #f0a500!important}.encart-red{background:#fff0f0!important;border:2px solid #c0392b!important}.encart-blue{background:#f0f7ff!important;border:2px solid #1F3A5F!important}.urgence{background:#fdecea!important;border-left:4px solid #c0392b!important}.fiche-footer{background:#1F3A5F!important;color:#aac8e0!important}.signatures{border-top:2px solid #1F3A5F!important}';
+
 function printFiche(id){
   const el = document.getElementById(id);
   if(!el) return;
@@ -1915,7 +1935,7 @@ function printFiche(id){
   w.document.write('<html><head><title>'+title+'</title><style>'+
     '*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5pt;color:#222}'+
     document.querySelector('style').textContent+
-    '.fiche-actions{display:none!important}'+
+    PRINT_EXTRA_CSS+
     '</style></head><body>'+el.outerHTML+'</body></html>');
   w.document.close();
   setTimeout(function(){w.print();},400);
@@ -1928,7 +1948,7 @@ function downloadFiche(id){
   const html = '<html><head><meta charset="UTF-8"><title>'+title+'</title><style>'+
     '*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5pt;color:#222}'+
     document.querySelector('style').textContent+
-    '.fiche-actions{display:none!important}'+
+    PRINT_EXTRA_CSS+
     '</style></head><body>'+el.outerHTML+'</body></html>';
   const blob = new Blob([html],{type:'text/html'});
   const a = document.createElement('a');
